@@ -1,13 +1,15 @@
 ---
 import Head from './Head.astro';
 
-const { title, description, ogImgSrc } = Astro.props;
+const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 ---
 
 <html lang="en">
-	<Head {title} {description} {ogImgSrc} />
+	<Head {title} {description} {ogImgSrc} {ogImgAlt} />
 
 	<body>
-		<slot />
+		<main>
+			<slot />
+		</main>
 	</body>
 </html>

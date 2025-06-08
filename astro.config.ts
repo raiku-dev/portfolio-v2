@@ -6,7 +6,7 @@ import { remarkReadingTime } from './src/plugins/readingTime';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://mikayil.dev',
+	site: import.meta.env.DEV ? 'http://localhost:4321' : 'https://mikayil.dev',
 	prefetch: {
 		defaultStrategy: 'viewport',
 		prefetchAll: true

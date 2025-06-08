@@ -18,7 +18,7 @@ TODO: Style RSS Feed
 					a { color: yellow; }
 					a:hover { color: lightgray; }
 
-					.rss-feed {
+					body {
 					padding: 10px 20px;
 					background-color: #222222;
 					color: lightgray;
@@ -37,7 +37,7 @@ TODO: Style RSS Feed
 				</style>
 			</head>
 
-			<body class="rss-feed">
+			<body>
 				<nav>
 					<p>
 						<strong>This is a web feed,</strong> also known as an RSS feed. <strong>
@@ -64,7 +64,9 @@ TODO: Style RSS Feed
 							</xsl:attribute>
 							Visit Website &#x2192; </a>
 					</header>
+
 					<h2>Recent Items</h2>
+
 					<xsl:for-each select="/rss/channel/item">
 						<div>
 							<h3>
@@ -75,6 +77,19 @@ TODO: Style RSS Feed
 									<xsl:value-of select="title" />
 								</a>
 							</h3>
+
+							<div class="categories">
+								<xsl:for-each select="category">
+									<small class="category-pill">
+										<xsl:value-of select="." />
+									</small>
+								</xsl:for-each>
+							</div>
+
+							<p class="summary">
+								<xsl:value-of select="description" />
+							</p>
+
 							<small> Published: <xsl:value-of select="pubDate" />
 							</small>
 						</div>
