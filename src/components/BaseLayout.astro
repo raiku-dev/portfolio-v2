@@ -1,0 +1,13 @@
+---
+import Head from './Head.astro';
+
+const { title, description, ogImgSrc } = Astro.props;
+---
+
+<html lang="en">
+	<Head {title} {description} {ogImgSrc} />
+
+	<body>
+		<slot />
+	</body>
+</html>

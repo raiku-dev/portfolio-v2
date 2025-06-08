@@ -1,0 +1,46 @@
+---
+import { ClientRouter } from 'astro:transitions';
+
+const {
+	title = 'Mikayil - Full-Stack Developer | Portfolio and Blog',
+	description = 'Personal Portfolio / Blog of Mikayil. Find out more about my personal projects or my learnings through my blog.',
+	// TODO: Add OG img
+	ogImgSrc = '',
+	ogImgAlt = 'Screenshot of the portfolio page'
+} = Astro.props;
+---
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="generator" content={Astro.generator} />
+
+	<link rel="sitemap" href="/sitemap-index.xml" />
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="Mikayil's Dev Blog"
+		href={new URL('rss.xml', Astro.site)}
+	/>
+	<title>{title}</title>
+	<meta name="description" content={description} />
+
+	<!-- Open Graph tags -->
+	<meta property="og:title" content={title} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={import.meta.env.SITE} />
+	<meta property="og:description" content={description} />
+	<meta property="og:image" content={ogImgSrc} />
+	<meta property="og:image:alt" content={ogImgAlt} />
+
+	<!-- TODO: Favicons -->
+	<link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg" />
+
+	<!-- TODO: Analytics -->
+
+	<!-- View Transitions-->
+	<ClientRouter />
+
+	<!-- Slot -->
+	<slot />
+</head>
