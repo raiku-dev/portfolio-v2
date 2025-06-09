@@ -43,7 +43,7 @@
 
 // Fonts and typography
 @mixin font-base {
-	font-family: 'Figtree';
+	font-family: 'JetBrains Mono';
 	color: var(--text);
 }
 
@@ -198,4 +198,13 @@
 @mixin border {
 	border: 1px solid var(--gray);
 	border-radius: 12px;
+}
+
+// Hover
+@mixin hover {
+	@media (hover: hover) {
+		&:hover {
+			@content;
+		}
+	}
 }

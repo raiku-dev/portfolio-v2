@@ -23,6 +23,7 @@
 - [ ] (Reviews ?)
 
 - [ ] Contact
+	- [ ] "How do you like your {coffee/tea/energy drink}" dynamic
 
 ### Details
 - [ ] Custom Cursor
@@ -32,8 +33,10 @@
 - [ ] View Transitions
 
 ### Other
-- [ ] Terminal
+- [ ] Link fonts and preload
 - [ ] Sitemap
+- [ ] Favicon
 - [ ] SEO optimization
 - [ ] a11y to some extent
 - [ ] Analytics
+- [ ] Terminal

@@ -1,0 +1,205 @@
+<script>
+	import logo from '../assets/images/pfp-small.webp';
+
+	let innerWidth = $state();
+	let open = $state(false);
+
+	let lastWidth = 0;
+	const breakpoint = 840;
+
+	function toggleMenu() {
+		open = !open;
+
+		if (open && innerWidth <= breakpoint) {
+			document.body.style.overflow = 'hidden';
+		} else {
+			document.body.style.overflow = 'auto';
+		}
+	}
+
+	function onResize() {
+		if (!open || innerWidth > breakpoint) return;
+		if (lastWidth !== innerWidth) {
+			open = false;
+			lastWidth = innerWidth;
+			toggleMenu();
+		}
+	}
+</script>
+
+<svelte:window bind:innerWidth onresize={onResize} />
+
+<header id="header">
+	<a href="/" class="logo-container">
+		<img src={logo.src} alt="Mikayil's alias raiku" />
+	</a>
+
+	<nav id="main-nav" aria-label="Main" hidden={innerWidth <= 840 && !open}>
+		<a href="/" title="To homepage">Home</a>
+		<a href="/blog" title="To my developer blog">Blog</a>
+		<a href="/#about" title="To the about section">About</a>
+		<a href="/#projects" title="To the projects section">Projects</a>
+		<a href="/#contact" title="To the contact section">Contact</a>
+	</nav>
+
+	<button
+		class="mbt"
+		aria-controls="main-nav"
+		aria-label="Open Main Menu"
+		aria-expanded={open}
+		onclick={toggleMenu}
+	>
+		<span class="dot" aria-hidden="true"></span>
+		<span class="dot" aria-hidden="true"></span>
+		<span class="dot" aria-hidden="true"></span>
+		<span class="dot" aria-hidden="true"></span>
+		<span class="dot" aria-hidden="true"></span>
+		<span class="dot" aria-hidden="true"></span>
+		<span class="dot" aria-hidden="true"></span>
+		<span class="dot" aria-hidden="true"></span>
+		<span class="dot" aria-hidden="true"></span>
+	</button>
+</header>
+
+<style lang="scss">
+	header {
+		display: flex;
+		position: fixed;
+		width: 100%;
+		top: 0;
+		left: 0;
+		padding: 12px 40px;
+		background-color: var(--header-bg);
+		justify-content: space-between;
+		align-items: center;
+		height: 80px;
+		box-shadow: 0 0 8px black;
+		z-index: 10000;
+
+		&::after {
+			z-index: -1;
+			position: absolute;
+			left: 0;
+			top: 0;
+			content: '';
+			width: 100%;
+			height: 80px;
+			backdrop-filter: blur(8px);
+		}
+
+		.logo-container {
+			display: flex;
+			height: 100%;
+			width: auto;
+			aspect-ratio: 1;
+			justify-content: center;
+			align-items: center;
+			border-radius: 50%;
+			overflow: hidden;
+			box-shadow: 0 0 8px var(--black);
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center;
+			}
+		}
+
+		.mbt {
+			display: none;
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 4px;
+			transition: 0.3s;
+
+			@include view-tablet-s {
+				display: grid;
+			}
+
+			&[aria-expanded='true'] {
+				transform: rotateZ(180deg);
+				gap: 4px;
+
+				.dot {
+					&:nth-child(2),
+					&:nth-child(4),
+					&:nth-child(6),
+					&:nth-child(8) {
+						opacity: 0;
+					}
+				}
+			}
+
+			.dot {
+				display: block;
+				width: 6px;
+				height: 6px;
+				background-color: var(--primary);
+				border-radius: 50%;
+				overflow: hidden;
+				transition: 0.3s;
+			}
+		}
+
+		nav {
+			display: flex;
+			justify-content: flex-end;
+			gap: 8px;
+			counter-reset: nav-link-counter;
+
+			@include view-tablet-s {
+				padding: 40px;
+				position: fixed;
+				top: 80px;
+				right: 0;
+				height: 100%;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: flex-end;
+				background-color: var(--header-bg);
+				backdrop-filter: blur(8px);
+				box-shadow: 0 0 8px black inset;
+				transition: 0.3s;
+				transform: translateX(0);
+
+				&[hidden] {
+					transform: translateX(100%);
+				}
+			}
+
+			a {
+				padding: 10px;
+				text-transform: uppercase;
+				font-weight: bold;
+				position: relative;
+				transition: 0.3s;
+
+				@include hover {
+					&::after {
+						width: 100%;
+					}
+				}
+
+				&::before {
+					@include smallText;
+					font-weight: bold;
+					counter-increment: nav-link-counter;
+					content: counter(nav-link-counter) '.';
+					color: var(--primary);
+				}
+
+				&::after {
+					content: '';
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 0%;
+					height: 2px;
+					border-radius: 50px;
+					background-color: var(--primary);
+					transition: 0.3s;
+				}
+			}
+		}
+	}
+</style>
