@@ -28,7 +28,6 @@ import logo from '../assets/images/pfp-small.webp';
 	function onResize() {
 		if (!open || window.innerWidth > breakpoint) return;
 		if (lastWidth !== window.innerWidth) {
-			open = false;
 			lastWidth = window.innerWidth;
 			toggleMenu();
 		}

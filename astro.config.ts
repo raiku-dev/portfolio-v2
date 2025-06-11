@@ -8,8 +8,6 @@ import { fileURLToPath } from 'url';
 import svelte from '@astrojs/svelte';
 import devtoolsJson from 'vite-plugin-devtools-json';
 
-import react from '@astrojs/react';
-
 const currentDir = dirname(fileURLToPath(import.meta.url))
 
 // https://astro.build/config
@@ -19,7 +17,7 @@ export default defineConfig({
         defaultStrategy: 'viewport',
         prefetchAll: true
     },
-    integrations: [mdx(), svelte(), react()],
+    integrations: [mdx(), svelte(),],
     markdown: {
         remarkPlugins: [remarkReadingTime]
     },
