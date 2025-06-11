@@ -1,6 +1,6 @@
 ---
 import Head from './Head.astro';
-import Header from './Header.svelte';
+import Header from './Header.astro';
 
 const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 ---
@@ -9,7 +9,7 @@ const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 	<Head {title} {description} {ogImgSrc} {ogImgAlt} />
 
 	<body>
-		<Header client:load />
+		<Header />
 
 		<main>
 			<slot />

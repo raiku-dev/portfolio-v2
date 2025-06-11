@@ -8,33 +8,35 @@ import { fileURLToPath } from 'url';
 import svelte from '@astrojs/svelte';
 import devtoolsJson from 'vite-plugin-devtools-json';
 
+import react from '@astrojs/react';
+
 const currentDir = dirname(fileURLToPath(import.meta.url))
 
 // https://astro.build/config
 export default defineConfig({
-	site: import.meta.env.DEV ? 'http://localhost:4321' : 'https://mikayil.dev',
-	prefetch: {
-		defaultStrategy: 'viewport',
-		prefetchAll: true
-	},
-	integrations: [mdx(), svelte()],
-	markdown: {
-		remarkPlugins: [remarkReadingTime]
-	},
-	adapter: node({
-		mode: 'standalone'
-	}),
-	vite: {
-		plugins: [
-			devtoolsJson()
-		],
-		css: {
-			preprocessorOptions: {
-				scss: {
-					api: "modern-compiler",
-					additionalData: `@use "${join(currentDir, './src/assets/styles/mixins')}" as *;`
-				}
-			}
-		},
-	}
+    site: import.meta.env.DEV ? 'http://localhost:4321' : 'https://mikayil.dev',
+    prefetch: {
+        defaultStrategy: 'viewport',
+        prefetchAll: true
+    },
+    integrations: [mdx(), svelte(), react()],
+    markdown: {
+        remarkPlugins: [remarkReadingTime]
+    },
+    adapter: node({
+        mode: 'standalone'
+    }),
+    vite: {
+        plugins: [
+            devtoolsJson()
+        ],
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    api: "modern-compiler",
+                    additionalData: `@use "${join(currentDir, './src/assets/styles/mixins')}" as *;`
+                }
+            }
+        },
+    }
 });

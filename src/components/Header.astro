@@ -1,40 +1,55 @@
-<script>
-	import logo from '../assets/images/pfp-small.webp';
+---
+import logo from '../assets/images/pfp-small.webp';
+---
 
-	let innerWidth = $state();
-	let open = $state(false);
+<script>
+	let open = false;
 
 	let lastWidth = 0;
 	const breakpoint = 840;
 
+	const navToggle = document.querySelector('header .mbt');
+	const nav = document.querySelector('header nav');
+
 	function toggleMenu() {
 		open = !open;
 
-		if (open && innerWidth <= breakpoint) {
+		if (open && window.innerWidth <= breakpoint) {
 			document.body.style.overflow = 'hidden';
+			nav?.removeAttribute('hidden');
+			navToggle?.setAttribute('aria-expanded', 'true');
 		} else {
 			document.body.style.overflow = 'auto';
+			nav?.setAttribute('hidden', 'true');
+			navToggle?.setAttribute('aria-expanded', 'false');
 		}
 	}
 
 	function onResize() {
-		if (!open || innerWidth > breakpoint) return;
-		if (lastWidth !== innerWidth) {
+		if (!open || window.innerWidth > breakpoint) return;
+		if (lastWidth !== window.innerWidth) {
 			open = false;
-			lastWidth = innerWidth;
+			lastWidth = window.innerWidth;
 			toggleMenu();
 		}
 	}
-</script>
 
-<svelte:window bind:innerWidth onresize={onResize} />
+	window.addEventListener('resize', onResize);
+	document.addEventListener('DOMContentLoaded', () => {
+		if (window.innerWidth > breakpoint) return;
+		nav?.setAttribute('hidden', '');
+		navToggle?.setAttribute('aria-expanded', 'false');
+	});
+
+	navToggle?.addEventListener('click', toggleMenu);
+</script>
 
 <header id="header">
 	<a href="/" class="logo-container">
 		<img src={logo.src} alt="Mikayil's alias raiku" />
 	</a>
 
-	<nav id="main-nav" aria-label="Main" hidden={innerWidth <= 840 && !open}>
+	<nav id="main-nav" aria-label="Main">
 		<a href="/" title="To homepage">Home</a>
 		<a href="/blog" title="To my developer blog">Blog</a>
 		<a href="/#about" title="To the about section">About</a>
@@ -42,13 +57,7 @@
 		<a href="/#contact" title="To the contact section">Contact</a>
 	</nav>
 
-	<button
-		class="mbt"
-		aria-controls="main-nav"
-		aria-label="Open Main Menu"
-		aria-expanded={open}
-		onclick={toggleMenu}
-	>
+	<button class="mbt" aria-controls="main-nav" aria-label="Open Main Menu">
 		<span class="dot" aria-hidden="true"></span>
 		<span class="dot" aria-hidden="true"></span>
 		<span class="dot" aria-hidden="true"></span>
