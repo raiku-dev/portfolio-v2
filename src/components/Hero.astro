@@ -1,0 +1,73 @@
+---
+
+---
+
+<section class="hero">
+	<p class="tagline">Hi, my name is</p>
+
+	<h1>MIKAYIL_GACEK.</h1>
+
+	<p class="nickname">alias raiku</p>
+
+	<h2>
+		I build things
+		<br />
+		for <span class="dynamic">the web.</span><span class="cursor"></span>
+	</h2>
+</section>
+
+<style lang="scss">
+	.hero {
+		.tagline {
+			font-size: 1.25rem;
+			color: var(--primary);
+			margin-bottom: 20px;
+			text-transform: uppercase;
+		}
+
+		h1 {
+			font-weight: 900;
+		}
+
+		.nickname {
+			@include h6;
+			color: var(--gray);
+			line-height: 0.5;
+			margin-bottom: 32px;
+		}
+
+		h2 {
+			@include h1 {
+				font-weight: 900;
+				color: var(--lightgray);
+				text-transform: uppercase;
+			}
+
+			.dynamic {
+				color: var(--primary);
+			}
+
+			@keyframes blink-animation {
+				0% {
+					opacity: 1;
+				}
+				50% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+
+			.cursor {
+				display: inline-block;
+				width: 28px;
+				height: 0.9em;
+				background-color: var(--white);
+				transform: translateY(0.1em);
+
+				animation: blink-animation 1.5s infinite ease-in-out;
+			}
+		}
+	}
+</style>

@@ -75,6 +75,7 @@
 	font-size: 4rem;
 	line-height: 1.2;
 	text-wrap: balance;
+	@content;
 
 	@include view-desktop-xs {
 		font-size: 3.5rem;

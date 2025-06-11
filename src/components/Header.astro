@@ -1,5 +1,5 @@
 ---
-import logo from '../assets/images/pfp-small.webp';
+import logo from '@assets/images/pfp-small.webp';
 ---
 
 <script>
@@ -35,8 +35,8 @@ import logo from '../assets/images/pfp-small.webp';
 
 	window.addEventListener('resize', onResize);
 	document.addEventListener('DOMContentLoaded', () => {
-		if (window.innerWidth > breakpoint) return;
-		nav?.setAttribute('hidden', '');
+		if (window.innerWidth < breakpoint) return;
+		nav?.removeAttribute('hidden');
 		navToggle?.setAttribute('aria-expanded', 'false');
 	});
 
@@ -48,7 +48,7 @@ import logo from '../assets/images/pfp-small.webp';
 		<img src={logo.src} alt="Mikayil's alias raiku" />
 	</a>
 
-	<nav id="main-nav" aria-label="Main">
+	<nav id="main-nav" aria-label="Main" hidden>
 		<a href="/" title="To homepage">Home</a>
 		<a href="/blog" title="To my developer blog">Blog</a>
 		<a href="/#about" title="To the about section">About</a>
