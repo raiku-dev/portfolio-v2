@@ -42,34 +42,26 @@
 }
 
 // Fonts and typography
-@mixin font-base {
+@mixin font-copy {
+	font-family: 'Victor Mono';
+	color: var(--text);
+}
+
+@mixin font-heading {
 	font-family: 'JetBrains Mono';
 	color: var(--text);
 }
 
 @mixin copy {
-	@include font-base;
+	@include font-copy;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 1rem;
 	line-height: 1.5;
 }
 
-@mixin nav-link {
-	@include font-base;
-	font-style: normal;
-	line-height: 1.5;
-	font-size: 1.1rem;
-	font-weight: bold;
-	text-transform: uppercase;
-
-	&:visited {
-		color: var(--text);
-	}
-}
-
 @mixin h1 {
-	@include font-base;
+	@include font-heading;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 4rem;
@@ -87,7 +79,7 @@
 }
 
 @mixin h2 {
-	@include font-base;
+	@include font-heading;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 3rem;
@@ -102,7 +94,7 @@
 }
 
 @mixin h3 {
-	@include font-base;
+	@include font-heading;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 2rem;
@@ -111,7 +103,7 @@
 }
 
 @mixin h4 {
-	@include font-base;
+	@include font-heading;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 1.5rem;
@@ -119,7 +111,7 @@
 }
 
 @mixin h5 {
-	@include font-base;
+	@include font-heading;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 1.25rem;
@@ -127,7 +119,7 @@
 }
 
 @mixin h6 {
-	@include font-base;
+	@include font-heading;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 1rem;
@@ -135,7 +127,7 @@
 }
 
 @mixin smallText {
-	@include font-base;
+	@include font-copy;
 	font-size: 0.8rem;
 	font-weight: normal;
 	line-height: 1.2;

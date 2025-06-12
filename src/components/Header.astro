@@ -3,8 +3,6 @@ import logo from '@assets/images/pfp-small.webp';
 ---
 
 <script>
-	let open = false;
-
 	let lastWidth = 0;
 	const breakpoint = 840;
 
@@ -12,9 +10,7 @@ import logo from '@assets/images/pfp-small.webp';
 	const nav = document.querySelector('header nav');
 
 	function toggleMenu() {
-		open = !open;
-
-		if (open && window.innerWidth <= breakpoint) {
+		if (nav?.hasAttribute('hidden') && window.innerWidth <= breakpoint) {
 			document.body.style.overflow = 'hidden';
 			nav?.removeAttribute('hidden');
 			navToggle?.setAttribute('aria-expanded', 'true');
@@ -26,8 +22,11 @@ import logo from '@assets/images/pfp-small.webp';
 	}
 
 	function onResize() {
-		if (!open || window.innerWidth > breakpoint) return;
-		if (lastWidth !== window.innerWidth) {
+		if (nav?.hasAttribute('hidden') || window.innerWidth > breakpoint) {
+			return;
+		}
+
+		if (lastWidth !== window.innerWidth && !nav?.hasAttribute('hidden')) {
 			lastWidth = window.innerWidth;
 			toggleMenu();
 		}
@@ -35,7 +34,7 @@ import logo from '@assets/images/pfp-small.webp';
 
 	window.addEventListener('resize', onResize);
 	document.addEventListener('DOMContentLoaded', () => {
-		if (window.innerWidth < breakpoint) return;
+		if (window.innerWidth <= breakpoint) return;
 		nav?.removeAttribute('hidden');
 		navToggle?.setAttribute('aria-expanded', 'false');
 	});
@@ -181,6 +180,7 @@ import logo from '@assets/images/pfp-small.webp';
 				font-weight: bold;
 				position: relative;
 				transition: 0.3s;
+				@include font-heading;
 
 				@include hover {
 					&::after {
@@ -190,6 +190,7 @@ import logo from '@assets/images/pfp-small.webp';
 
 				&::before {
 					@include smallText;
+					@include font-heading;
 					font-weight: bold;
 					counter-increment: nav-link-counter;
 					content: counter(nav-link-counter) '.';

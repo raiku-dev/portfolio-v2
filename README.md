@@ -40,3 +40,4 @@
 - [ ] a11y to some extent
 - [ ] Analytics
 - [ ] Terminal
+- [ ] Check mobile (especially old) for overflowing / horizontal scroll issues
