@@ -1,72 +1,174 @@
----
+<script>
+	const words = ['the web.', 'mobile.', 'people.', 'businesses.'];
+	const wordElement = document.querySelector('.hero .dynamic');
 
----
+	while (wordElement) {
+		for (const word of words) {
+			if (word === wordElement.textContent) continue;
+
+			const currentWord = wordElement.textContent || '';
+			for (let j = 0; j < currentWord.length; j++) {
+				wordElement.textContent = currentWord.slice(
+					0,
+					currentWord.length - 1 - j
+				);
+				await wait(100);
+			}
+
+			for (let k = 0; k < word.length; k++) {
+				wordElement.textContent = word.slice(0, k + 1);
+				await wait(100);
+			}
+			await wait(2000);
+		}
+	}
+
+	async function wait(ms: number) {
+		return new Promise(resolve => setTimeout(resolve, ms));
+	}
+</script>
 
 <section class="hero">
-	<p class="tagline">Hi, my name is</p>
+	<div class="content">
+		<p class="tagline">Hi, my name is</p>
 
-	<h1>MIKAYIL_GACEK.</h1>
+		<h1>
+			<span class="name"> MIKAYIL_GACEK </span>
+			<span class="yellow">&lcub;</span>
+			<span class="nickname">// alias raiku</span>
 
-	<p class="nickname">alias raiku</p>
+			<span class="subheading">
+				<span class="first-line"> I build things </span>
+				<span class="second-line">
+					for <span class="dynamic">the web.</span><span
+						class="cursor"></span>
+				</span>
+			</span>
+			<span class="yellow right-brace">&rcub;</span>
+		</h1>
 
-	<h2>
-		I build things
-		<br />
-		for <span class="dynamic">the web.</span><span class="cursor"></span>
-	</h2>
+		<p class="text">
+			<span> I'm a Full Stack Developer specialized in </span>
+			<span> web-, software- and mobile development. </span>
+			<span> In it for the love of the craft and here to stay. </span>
+			<span> Obsessed with learning and getting better. </span>
+		</p>
+	</div>
 </section>
 
 <style lang="scss">
 	.hero {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		min-height: calc(100svh - 80px);
+		counter-reset: line-number;
+
+		.content {
+			padding-left: 2em;
+		}
+
+		.tagline,
+		.name,
+		.subheading .first-line,
+		.subheading .second-line,
+		.right-brace,
+		.text span {
+			position: relative;
+
+			&::before {
+				@include font-heading;
+				counter-increment: line-number;
+				content: counter(line-number);
+				font-size: 1rem;
+				position: absolute;
+				left: -2em;
+				top: 50%;
+				transform: translateY(-50%);
+				color: var(--darkgray);
+			}
+		}
+
 		.tagline {
+			@include font-heading;
 			font-size: 1.25rem;
 			color: var(--primary);
-			margin-bottom: 20px;
+			margin-bottom: 0.75rem;
 			text-transform: uppercase;
 		}
 
 		h1 {
 			font-weight: 900;
+			color: var(--white);
+			margin-bottom: 2.5rem;
+
+			.yellow {
+				color: var(--secondary);
+			}
+
+			.nickname {
+				display: block;
+				@include h6;
+				color: var(--gray);
+				line-height: 1;
+				margin-bottom: 1.25rem;
+			}
+
+			.subheading {
+				display: block;
+				@include h1 {
+					font-weight: 900;
+					color: var(--lightgray);
+					text-transform: uppercase;
+				}
+
+				.first-line,
+				.second-line {
+					display: block;
+					padding-left: 1em;
+				}
+
+				.dynamic {
+					color: var(--primary);
+				}
+
+				@keyframes blink-animation {
+					0% {
+						opacity: 1;
+					}
+					50% {
+						opacity: 1;
+					}
+					51% {
+						opacity: 0;
+					}
+					100% {
+						opacity: 0;
+					}
+				}
+
+				.cursor {
+					display: inline-block;
+					width: 20px;
+					height: 0.9em;
+					background-color: var(--white);
+					transform: translateY(0.1em);
+					animation: blink-animation 1s infinite;
+				}
+			}
 		}
 
-		.nickname {
-			@include h6;
-			color: var(--gray);
-			line-height: 0.5;
-			margin-bottom: 32px;
-		}
+		.text {
+			font-family: 'Victor Mono';
+			max-width: 600px;
+			text-wrap: balance;
 
-		h2 {
-			@include h1 {
-				font-weight: 900;
-				color: var(--lightgray);
-				text-transform: uppercase;
-			}
+			span {
+				display: block;
 
-			.dynamic {
-				color: var(--primary);
-			}
-
-			@keyframes blink-animation {
-				0% {
-					opacity: 1;
+				&:nth-child(2) {
+					margin-bottom: 20px;
 				}
-				50% {
-					opacity: 0;
-				}
-				100% {
-					opacity: 1;
-				}
-			}
-
-			.cursor {
-				display: inline-block;
-				width: 28px;
-				height: 0.9em;
-				background-color: var(--white);
-				transform: translateY(0.1em);
-
-				animation: blink-animation 1.5s infinite ease-in-out;
 			}
 		}
 	}
