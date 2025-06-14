@@ -36,6 +36,7 @@ import bg from '@assets/images/circuit.png';
 <section class="hero">
 	<div class="bg-container">
 		<Image class="bg" src={bg} alt="" />
+		<div class="shine"></div>
 	</div>
 
 	<div class="content">
@@ -73,6 +74,7 @@ import bg from '@assets/images/circuit.png';
 		min-height: calc(100svh - 80px);
 		counter-reset: line-number;
 		position: relative;
+		overflow: hidden;
 
 		.bg-container {
 			&::after {
@@ -86,7 +88,7 @@ import bg from '@assets/images/circuit.png';
 				background: radial-gradient(
 					ellipse at center,
 					transparent 0%,
-					var(--background) 90%
+					var(--background) 80%
 				);
 			}
 
@@ -99,7 +101,40 @@ import bg from '@assets/images/circuit.png';
 				height: 100%;
 				object-fit: contain;
 				z-index: 1;
-				filter: brightness(0) invert(1) brightness(0.12);
+				filter: brightness(0) invert(1) brightness(0.3);
+
+				@include view-tablet-s {
+					object-fit: cover;
+					object-position: center;
+				}
+			}
+
+			.shine {
+				position: absolute;
+				top: 0;
+				left: -50%;
+				width: 200%;
+				height: 100%;
+				z-index: 1;
+				background: linear-gradient(
+					90deg,
+					rgba($color: #111111, $alpha: 1) 10%,
+					rgba($color: #111111, $alpha: 0.9) 35%,
+					rgba($color: #111111, $alpha: 0) 50%,
+					rgba($color: #111111, $alpha: 0.9) 65%,
+					rgba($color: #111111, $alpha: 1) 90%
+				);
+				animation: shine 3s linear infinite alternate;
+				mix-blend-mode: darken;
+			}
+
+			@keyframes shine {
+				0% {
+					transform: translate3d(-25%, 0, 0);
+				}
+				100% {
+					transform: translate3d(25%, 0, 0);
+				}
 			}
 		}
 
@@ -107,6 +142,7 @@ import bg from '@assets/images/circuit.png';
 			position: relative;
 			z-index: 3;
 			padding-left: 2em;
+			text-shadow: 0 0 50px black;
 		}
 
 		.tagline,
@@ -134,14 +170,26 @@ import bg from '@assets/images/circuit.png';
 			@include font-heading;
 			font-size: 1.25rem;
 			color: var(--primary);
-			margin-bottom: 0.75rem;
+			margin-bottom: 0.5em;
 			text-transform: uppercase;
+
+			@include view-mobile {
+				font-size: 1rem;
+			}
 		}
 
 		h1 {
 			font-weight: 900;
 			color: var(--white);
-			margin-bottom: 2.5rem;
+			margin-bottom: 1.2em;
+
+			@include view-tablet-s {
+				font-size: 2.8rem;
+			}
+
+			@include view-tablet-s {
+				font-size: 2rem;
+			}
 
 			.yellow {
 				color: var(--secondary);
@@ -152,7 +200,7 @@ import bg from '@assets/images/circuit.png';
 				@include h6;
 				color: var(--gray);
 				line-height: 1;
-				margin-bottom: 1.25rem;
+				margin-bottom: 1.2em;
 			}
 
 			.subheading {
@@ -163,10 +211,26 @@ import bg from '@assets/images/circuit.png';
 					text-transform: uppercase;
 				}
 
+				@include view-tablet-s {
+					font-size: 2.8rem;
+				}
+
+				@include view-tablet-s {
+					font-size: 2rem;
+				}
+
+				@include view-mobile-s {
+					margin-bottom: 0.5em;
+				}
+
 				.first-line,
 				.second-line {
 					display: block;
 					padding-left: 1em;
+
+					@include view-mobile-s {
+						padding-left: 0.5em;
+					}
 				}
 
 				.dynamic {
@@ -208,7 +272,7 @@ import bg from '@assets/images/circuit.png';
 				display: block;
 
 				&:nth-child(2) {
-					margin-bottom: 20px;
+					margin-bottom: 1.2em;
 				}
 			}
 		}
