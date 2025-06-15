@@ -57,13 +57,20 @@
 					padding: 20px 0;
 					}
 
+					.content {
+					display: flex;
+					flex-direction: column;
+					gap: 24px;
+					}
+
 					.items-heading {
 					margin-top: 80px;
 					margin-bottom: 20px;
 					}
 
 					.post {
-					box-shadow: 0 0 8px black;
+					box-shadow: 0 0 12px #00000099;
+					border: 1px solid #bb9000;
 					padding: 20px;
 					border-radius: 12px;
 					}

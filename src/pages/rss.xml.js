@@ -2,19 +2,22 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 
 export async function GET(context) {
-	const blog = await getCollection('blog');
+	const blogposts = await getCollection('blogpost');
+	const postsSorted = blogposts.sort(
+		(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+	);
 	return rss({
 		stylesheet: '/styles/rss.xsl',
 		title: "Mikayil's Dev Blog",
 		description:
 			'Sharing learnings and all kinds of interesting things I come across.',
 		site: context.site,
-		items: blog.map(post => ({
+		items: blogposts.map(post => ({
 			title: post.data.title,
 			pubDate: post.data.pubDate,
 			description: post.data.description,
 			categories: post.data.categories,
-			link: `/blog/${post.id}/`
+			link: `/blog/post/${post.id}/`
 		}))
 	});
 }
