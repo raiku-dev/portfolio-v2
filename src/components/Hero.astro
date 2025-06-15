@@ -124,7 +124,7 @@ import bg from '@assets/images/circuit.png';
 					rgba($color: #111111, $alpha: 0.9) 65%,
 					rgba($color: #111111, $alpha: 1) 90%
 				);
-				animation: shine 3s linear infinite alternate;
+				animation: shine 3s ease-in-out infinite alternate;
 				mix-blend-mode: darken;
 			}
 
@@ -171,7 +171,6 @@ import bg from '@assets/images/circuit.png';
 			font-size: 1.25rem;
 			color: var(--primary);
 			margin-bottom: 0.5em;
-			text-transform: uppercase;
 
 			@include view-mobile {
 				font-size: 1rem;
@@ -181,7 +180,7 @@ import bg from '@assets/images/circuit.png';
 		h1 {
 			font-weight: 900;
 			color: var(--white);
-			margin-bottom: 1.2em;
+			margin-bottom: 0.75em;
 
 			@include view-tablet-s {
 				font-size: 2.8rem;
@@ -197,7 +196,7 @@ import bg from '@assets/images/circuit.png';
 
 			.nickname {
 				display: block;
-				@include h6;
+				font-size: 1rem;
 				color: var(--gray);
 				line-height: 1;
 				margin-bottom: 1.2em;
@@ -205,11 +204,8 @@ import bg from '@assets/images/circuit.png';
 
 			.subheading {
 				display: block;
-				@include h1 {
-					font-weight: 900;
-					color: var(--lightgray);
-					text-transform: uppercase;
-				}
+				font-weight: 900;
+				color: var(--lightgray);
 
 				@include view-tablet-s {
 					font-size: 2.8rem;

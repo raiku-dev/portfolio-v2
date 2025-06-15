@@ -26,10 +26,10 @@ const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 		src: url('/fonts/vm.woff2') format('woff2');
 	}
 	@font-face {
-		font-family: 'Victor Mono';
+		font-family: 'Victor Mono italic';
 		font-style: italic;
 		font-weight: 100 900;
-		src: url('/fonts/vm-i.woff2') format('woff2');
+		src: url('/fonts/jb-i.woff2') format('woff2');
 	}
 	@font-face {
 		font-family: 'JetBrains Mono';
@@ -60,7 +60,7 @@ const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 		--header-bg: #111111aa;
 		--lightgray: #aaaaaa;
 		--gray: #888888;
-		--darkgray: #555555;
+		--darkgray: #333333;
 		--red: #ff5060;
 		--green: #66cc55;
 
@@ -126,6 +126,10 @@ const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 		@include h2;
 	}
 
+	.section-heading {
+		font-weight: 900;
+	}
+
 	h3 {
 		@include h3;
 	}
@@ -143,9 +147,9 @@ const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 	}
 
 	p,
-	a {
+	a,
+	li {
 		@include copy;
-		font-weight: 800;
 	}
 
 	small {
