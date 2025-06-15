@@ -1,0 +1,33 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+export const getStaticPaths = (async () => {
+	const blogposts = await getCollection('blogpost');
+	return blogposts.map(post => ({
+		params: { id: post.id },
+		props: { post }
+	}));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout
+	title={post.data.title}
+	description={post.data.description}
+	ogImgSrc={post.data.cover}
+	ogImgAlt={post.data.coverAlt}
+>
+	<section>
+		<Content />
+	</section>
+</BaseLayout>
+
+<style lang="scss">
+	section {
+		max-width: 1000px;
+	}
+</style>

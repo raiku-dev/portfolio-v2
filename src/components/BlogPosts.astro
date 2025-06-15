@@ -1,0 +1,235 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import defaultPostCover from 'src/assets/images/post.webp';
+import defaultAuthorImg from 'src/assets/images/pfp-small.webp';
+
+const blogposts = await getCollection('blogpost');
+const latestPosts = blogposts
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
+---
+
+<section class="last-blog-posts">
+	<h2 class="section-heading">Latest Posts</h2>
+	<a href="/blog" class="blog-link"><span>//</span><span>see all</span></a>
+
+	<div class="post-container">
+		{
+			latestPosts.map(({ data: p, id }) => (
+				<div class="post">
+					<a href={`/blog/post/${id}`} class="img-container">
+						<Image
+							src={p.cover ?? defaultPostCover}
+							alt={p.coverAlt ?? ''}
+						/>
+					</a>
+
+					<div class="text-container">
+						<p class="pubDate">
+							{p.pubDate.toLocaleString('en-US', {
+								dateStyle: 'long'
+							})}
+						</p>
+
+						<a class="heading" href={`/blog/post/${id}`}>
+							<h3>{p.title}</h3>
+						</a>
+
+						<p class="description">{p.description}</p>
+
+						<div class="categories">
+							{p.categories.map(c => (
+								<a
+									href={`/blog/tags/${c.toLowerCase()}`}
+									class="category"
+								>
+									{c}
+								</a>
+							))}
+						</div>
+
+						<p class="author">
+							<Image
+								src={p.author.img ?? defaultAuthorImg}
+								alt={p.author.name}
+							/>
+							{p.author.name}
+						</p>
+					</div>
+				</div>
+			))
+		}
+	</div>
+</section>
+
+<style lang="scss">
+	.last-blog-posts {
+		.section-heading {
+		}
+
+		.blog-link {
+			@include font-heading;
+			display: block;
+			width: fit-content;
+			margin-bottom: 40px;
+			color: var(--secondary);
+			text-transform: uppercase;
+			display: flex;
+			gap: 8px;
+			transition: 0.2s;
+			position: relative;
+
+			&::after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 0%;
+				height: 2px;
+				border-radius: 50px;
+				background-color: var(--white);
+				transition: 0.3s;
+			}
+
+			@include hover {
+				gap: 12px;
+				color: var(--white);
+
+				&::after {
+					width: 100%;
+				}
+			}
+		}
+
+		.post-container {
+			display: flex;
+			justify-content: center;
+			gap: 28px;
+			flex-wrap: wrap;
+
+			.post {
+				display: flex;
+				flex-direction: column;
+				flex: 1 1 300px;
+				max-width: 350px;
+				border: 1px solid var(--secondary);
+				padding: 20px;
+				border-radius: 4px;
+
+				.img-container {
+					border: 1px solid var(--secondary);
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: 100%;
+					height: auto;
+					aspect-ratio: 16/9;
+					border-radius: 4px;
+					overflow: hidden;
+					margin-bottom: 20px;
+					transition: 0.2s;
+
+					@include hover {
+						border-color: var(--primary);
+					}
+
+					img {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+						object-position: center;
+					}
+				}
+
+				.text-container {
+					display: flex;
+					flex-direction: column;
+					flex: 1 1 auto;
+
+					.pubDate {
+						margin-bottom: 12px;
+					}
+
+					.pubDate,
+					.author,
+					.description {
+						font-size: 0.875rem;
+						color: var(--gray);
+					}
+
+					.heading {
+						width: fit-content;
+
+						h3 {
+							@include h6;
+							color: var(--white);
+							margin-bottom: 12px;
+							display: -webkit-box;
+							-webkit-box-orient: vertical;
+							-webkit-line-clamp: 3;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							width: fit-content;
+							transition: 0.2s;
+							text-decoration: underline;
+							text-decoration-color: transparent;
+						}
+
+						@include hover {
+							h3 {
+								color: var(--primary);
+								text-decoration-color: var(--primary);
+							}
+						}
+					}
+
+					.description {
+						margin-top: auto;
+						color: var(--lightgray);
+						margin-bottom: 20px;
+					}
+
+					.categories {
+						display: flex;
+						flex-wrap: wrap;
+						gap: 8px;
+						margin-bottom: 20px;
+
+						.category {
+							line-height: 1;
+							font-size: 0.8rem;
+							display: flex;
+							@include font-heading;
+							color: var(--secondary);
+							text-decoration: underline;
+							transition: 0.2s;
+
+							&::before {
+								content: '#';
+							}
+
+							@include hover {
+								color: var(--white);
+								text-decoration-color: var(--white);
+							}
+						}
+					}
+
+					.author {
+						display: flex;
+						gap: 8px;
+						align-items: center;
+
+						img {
+							height: 2em;
+							width: auto;
+							overflow: hidden;
+							border-radius: 50%;
+						}
+					}
+				}
+			}
+		}
+	}
+</style>
