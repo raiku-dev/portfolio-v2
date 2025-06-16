@@ -1,0 +1,59 @@
+<div class="accordion">
+	<button class="title">
+		<slot name="title" />
+	</button>
+
+	<div class="text-container">
+		<slot name="content" />
+	</div>
+</div>
+
+<style lang="scss">
+	.accordion {
+		width: 100%;
+		border-bottom: 2px solid var(--primary);
+
+		.title {
+			:global(*) {
+				width: 100%;
+				padding: 16px 0;
+				display: flex;
+				justify-content: flex-start;
+				@include font-heading;
+				color: var(--white);
+				font-weight: 900;
+			}
+		}
+
+		.text-container {
+			padding: 16px;
+
+			:global(a) {
+				color: var(--primary);
+				transition: 0.2s;
+				position: relative;
+
+				&::after {
+					content: '';
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 0%;
+					height: 2px;
+					border-radius: 50px;
+					background-color: var(--white);
+					transition: 0.3s;
+				}
+
+				@include hover {
+					gap: 12px;
+					color: var(--white);
+
+					&::after {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+</style>

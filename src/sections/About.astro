@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets';
+import portrait from '@assets/images/portrait.webp';
+import pfp from '@assets/images/pfp.webp';
+import Accordion from '@components/Accordion.astro';
+---
+
+<section class="about">
+	<h2 class="section-heading">About me</h2>
+
+	<div class="content">
+		<div class="accordion-container">
+			<Accordion>
+				<p slot="title">Who am I?</p>
+
+				<p slot="content">
+					Hey, I'm Mikayil. You might also know me under my alias <a
+						target="_blank"
+						rel="noreferrer noopener"
+						href="https://x.com/raiku_dev">raiku</a
+					>.
+				</p>
+			</Accordion>
+		</div>
+
+		<div class="img-container">
+			<Image src={portrait} alt="Mikayil Gacek" />
+			<Image src={pfp} alt="Mikayil Gacek's alias raiku" class="pfp" />
+		</div>
+	</div>
+</section>
+
+<style lang="scss">
+	.about {
+		.section-heading {
+		}
+
+		.content {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 80px;
+
+			.img-container {
+				flex: 1 1 350px;
+				max-width: 500px;
+				overflow: hidden;
+				border-radius: 4px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+
+				@include hover {
+					.pfp {
+						opacity: 1;
+						filter: blur(0px);
+					}
+				}
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					object-position: center;
+				}
+
+				.pfp {
+					transition: 0.5s;
+					position: absolute;
+					left: 0;
+					top: 0;
+					filter: blur(20px);
+					opacity: 0;
+				}
+			}
+
+			.accordion-container {
+				flex: 1 1 350px;
+			}
+		}
+	}
+</style>

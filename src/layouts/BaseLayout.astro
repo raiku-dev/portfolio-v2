@@ -1,6 +1,6 @@
 ---
-import Head from '@components/Head.astro';
-import Header from '@components/Header.astro';
+import Head from '@sections/Head.astro';
+import Header from '@sections/Header.astro';
 
 const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 ---
@@ -29,7 +29,7 @@ const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 		font-family: 'Victor Mono italic';
 		font-style: italic;
 		font-weight: 100 900;
-		src: url('/fonts/jb-i.woff2') format('woff2');
+		src: url('/fonts/vm-i.woff2') format('woff2');
 	}
 	@font-face {
 		font-family: 'JetBrains Mono';
@@ -51,8 +51,7 @@ const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 		--header-height: 80px;
 
 		// Colors
-		--primary: #eecc00;
-		--secondary: #bb9000;
+		--primary: #bb9000;
 		--text: #cccccc;
 		--black: #111111;
 		--white: #ffffff;
@@ -128,6 +127,7 @@ const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 
 	.section-heading {
 		font-weight: 900;
+		margin-bottom: 40px;
 	}
 
 	h3 {
