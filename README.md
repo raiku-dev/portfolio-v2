@@ -20,12 +20,12 @@
 
 - [ ] (Reviews ?)
 
-- [ ] Contact
-	- [ ] "How do you like your {coffee/tea/energy drink}" dynamic
+- [ ] Now page
 
 - [ ] Footer
 	- [ ] Social links (GitHub, X, LinkedIn)
 	- [ ] Footer cursor animation behind name (blinking cursor)
+	- [ ] Back to top btn
 
 
 ## Blog
