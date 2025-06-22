@@ -13,7 +13,10 @@ import Accordion from '@components/Accordion.astro';
 	<div class="content">
 		<div class="accordion-container">
 			<Accordion>
-				<p slot="title">Who am I?</p>
+				<p slot="title">
+					<span class="accent">1.</span>
+					<span>Who am I?</span>
+				</p>
 
 				<p slot="content">
 					Hey, I'm Mikayil. You might also know me under my alias <a
@@ -27,15 +30,61 @@ import Accordion from '@components/Accordion.astro';
 			</Accordion>
 
 			<Accordion>
-				<p slot="title">My inspiration</p>
+				<p slot="title">
+					<span class="accent">2.</span>
+					<span>The initial spark</span>
+				</p>
 
-				<p slot="content"></p>
+				<p slot="content">
+					My first smartphone was an iPhone and I stayed an iPhone
+					user for many years. At one point I tried an android and
+					hated the experience for several reasons but the main ones
+					were performance and battery life. A couple for years later
+					I got an Apple Watch and a MacBook and I loved how good the
+					integrations worked, how good the ecosystem was as a whole.
+					At that point I wanted to find out more about iOS/macOS
+					development and started to dabble with Swift to learn the
+					basics of programming.
+				</p>
 			</Accordion>
 
 			<Accordion>
-				<p slot="title">My mom was right</p>
+				<p slot="title">
+					<span class="accent">3.</span>
+					<span>My mom was right</span>
+				</p>
 
-				<p slot="content"></p>
+				<p slot="content">
+					I was just about done with my apprenticeship in the
+					automotive industry at BMW (my favorite cars!) when I
+					discovered my love for programming, solving complex problems
+					and building. Shortly after I was done playing around with
+					Swift, basic playgrounds and courses I wanted to learn more,
+					wanted to know how I could pivot and switch careers. To be
+					honest this shouldn't have been a big surprise because I was
+					always the go-to person in all things computer and tech. I
+					built my own PC at the age of 12 and spent countless hours
+					in front of a computer screen each day. Aside from
+					videogames I was really interested in all kinds of creative
+					fields that required a computer: Music production, editing
+					graphics with photoshop, cutting videos and making YouTube
+					videos. My mom was right, I should've studied Computer
+					Science but I was so fed up with school after I finished. I
+					wanted to move out and work for my own money, live under my
+					own roof and be my own man. I was successful with that
+					luckily but as I said made the wrong choice for my
+					professional career. Also the math involved in computer
+					science scared me at the time. I love to understand how
+					things work and why they work in a specific way but at some
+					point in school I wasn't able to grasp a couple of
+					mathematical concepts naturally and the teachers at the time
+					didn't care to explain to our class how and why something
+					worked. We learned formulae that we had to memorize to pass
+					an exam. Math was fun until it wasn't and I was scared that
+					this would be my life for another 3-4 years if I chose to
+					study so I picked to go after the thing that interested the
+					most after computers: cars.
+				</p>
 			</Accordion>
 
 			<Accordion>
@@ -77,7 +126,7 @@ import Accordion from '@components/Accordion.astro';
 			gap: 80px;
 
 			.img-container {
-				flex: 1 1 350px;
+				flex: 1 1 250px;
 				max-width: 500px;
 				overflow: hidden;
 				border-radius: 4px;
@@ -111,7 +160,11 @@ import Accordion from '@components/Accordion.astro';
 			}
 
 			.accordion-container {
-				flex: 1 1 350px;
+				flex: 1 1 400px;
+
+				.accent {
+					color: var(--primary);
+				}
 			}
 		}
 	}
