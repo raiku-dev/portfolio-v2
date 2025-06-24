@@ -227,12 +227,17 @@ import Accordion from '@components/Accordion.astro';
 			.accordion-container {
 				flex: 1 1 450px;
 
-				.accent {
-					color: var(--primary);
-				}
+				p {
+					display: flex;
+					gap: 8px;
 
-				.text {
-					@include copy-s;
+					.accent {
+						color: var(--primary);
+					}
+
+					.text {
+						@include copy-s;
+					}
 				}
 			}
 		}
