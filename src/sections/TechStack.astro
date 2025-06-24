@@ -1,0 +1,246 @@
+---
+import TypeScript from '~icons/vscode-icons/file-type-typescript-official';
+import JavaScript from '~icons/vscode-icons/file-type-js-official';
+import Node from '~icons/vscode-icons/file-type-node';
+import Svelte from '~icons/vscode-icons/file-type-svelte';
+import React from '~icons/vscode-icons/file-type-reactjs';
+import Php from '~icons/vscode-icons/file-type-php3';
+import Vite from '~icons/vscode-icons/file-type-vite';
+import Psql from '~icons/vscode-icons/file-type-pgsql';
+import MySQL from '~icons/vscode-icons/file-type-mysql';
+import SQLite from '~icons/vscode-icons/file-type-sqlite';
+import Scss from '~icons/vscode-icons/file-type-scss';
+import Html from '~icons/vscode-icons/file-type-html';
+import Css from '~icons/vscode-icons/file-type-css';
+import Linux from '~icons/devicon/linux';
+import Docker from '~icons/material-icon-theme/docker';
+import GhActions from '~icons/logos/github-actions';
+import GitHub from '~icons/bytesize/github';
+import GitLab from '~icons/vscode-icons/file-type-gitlab';
+import WordPress from '~icons/skill-icons/wordpress';
+import Typo3 from '~icons/vscode-icons/file-type-typo3';
+import Strapi from '~icons/logos/strapi-icon';
+import Bash from '~icons/devicon-plain/bash';
+import Neovim from '~icons/devicon/neovim';
+import Vscode from '~icons/devicon/vscode';
+---
+
+<section class="tech-stack">
+	<h2 class="section-heading">Tech Stack</h2>
+
+	<h3>Backend</h3>
+
+	<div class="tech-container">
+		<div class="tech">
+			<TypeScript />
+			<TypeScript />
+			<p>TypeScript</p>
+		</div>
+		<div class="tech">
+			<Node />
+			<Node />
+			<p>Node</p>
+		</div>
+		<div class="tech">
+			<Svelte />
+			<Svelte />
+			<p>SvelteKit</p>
+		</div>
+		<div class="tech">
+			<Php />
+			<Php />
+			<p>PHP</p>
+		</div>
+		<div class="tech">
+			<Psql />
+			<Psql />
+			<p>PostgreSQL</p>
+		</div>
+		<div class="tech">
+			<MySQL />
+			<MySQL />
+			<p>MySQL</p>
+		</div>
+		<div class="tech">
+			<SQLite />
+			<SQLite />
+			<p>SQLite</p>
+		</div>
+		<div class="tech">
+			<Vite />
+			<Vite />
+			<p>Vite</p>
+		</div>
+	</div>
+
+	<h3>Frontend</h3>
+
+	<div class="tech-container">
+		<div class="tech">
+			<Svelte />
+			<Svelte />
+			<p>Svelte</p>
+		</div>
+		<div class="tech">
+			<React />
+			<React />
+			<p>React</p>
+		</div>
+		<div class="tech">
+			<TypeScript />
+			<TypeScript />
+			<p>TypeScript</p>
+		</div>
+		<div class="tech">
+			<JavaScript />
+			<JavaScript />
+			<p>JavaScript</p>
+		</div>
+		<div class="tech">
+			<Scss />
+			<Scss />
+			<p>SCSS</p>
+		</div>
+		<div class="tech">
+			<Css />
+			<Css />
+			<p>CSS</p>
+		</div>
+		<div class="tech">
+			<Html />
+			<Html />
+			<p>HTML</p>
+		</div>
+	</div>
+
+	<h3>Tools</h3>
+
+	<div class="tech-container">
+		<div class="tech">
+			<Linux />
+			<Linux />
+			<p>Linux</p>
+		</div>
+		<div class="tech">
+			<Docker />
+			<Docker />
+			<p>Docker</p>
+		</div>
+		<div class="tech">
+			<GhActions />
+			<GhActions />
+			<p>GitHub Actions</p>
+		</div>
+		<div class="tech">
+			<GitHub />
+			<GitHub />
+			<p>GitHub</p>
+		</div>
+		<div class="tech">
+			<GitLab />
+			<GitLab />
+			<p>GitLab</p>
+		</div>
+		<div class="tech">
+			<WordPress />
+			<WordPress />
+			<p>WordPress</p>
+		</div>
+		<div class="tech">
+			<Strapi />
+			<Strapi />
+			<p>Strapi</p>
+		</div>
+		<div class="tech">
+			<Typo3 />
+			<Typo3 />
+			<p>TYPO3</p>
+		</div>
+		<div class="tech">
+			<Bash />
+			<Bash />
+			<p>Bash / Terminal</p>
+		</div>
+		<div class="tech">
+			<Neovim />
+			<Neovim />
+			<p>Neovim</p>
+		</div>
+		<div class="tech">
+			<Vscode />
+			<Vscode />
+			<p>VSCode</p>
+		</div>
+	</div>
+</section>
+
+<style lang="scss">
+	.tech-stack {
+		h3 {
+			margin-bottom: 20px;
+			@include h4;
+		}
+
+		.tech-container {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+			@include view-mobile-m {
+				display: flex;
+				flex-wrap: wrap;
+			}
+
+			gap: 8px;
+			margin-bottom: 40px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			.tech {
+				display: flex;
+				gap: 12px;
+				padding: 8px 8px 6px;
+				background-color: rgba($color: #333, $alpha: 0.4);
+				border-radius: 4px;
+				align-items: center;
+				position: relative;
+				overflow: hidden;
+
+				:global(svg) {
+					width: 24px;
+					height: 24px;
+				}
+
+				:global(svg:nth-child(2)) {
+					z-index: 0;
+					position: absolute;
+					filter: blur(20px) saturate(4);
+					transform: scale(8);
+				}
+
+				:global(svg:first-child) {
+					z-index: 1;
+				}
+
+				@include view-mobile-m {
+					:global(svg) {
+						width: 28px;
+						height: 28px;
+					}
+				}
+
+				p {
+					z-index: 2;
+					@include font-heading;
+					font-weight: 400;
+					text-transform: none;
+
+					@include view-mobile-m {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+</style>
