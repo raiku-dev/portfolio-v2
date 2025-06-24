@@ -22,7 +22,7 @@ const latestPosts = blogposts
 			latestPosts.map(({ data: p, id }) => (
 				<div class="post">
 					<a
-						href={`/blog/post/${id}`}
+						href={`/blog/posts/${id}`}
 						class="img-container"
 						title="read post"
 					>
@@ -39,7 +39,7 @@ const latestPosts = blogposts
 							})}
 						</p>
 
-						<a class="heading" href={`/blog/post/${id}`}>
+						<a class="heading" href={`/blog/posts/${id}`}>
 							<h3>{p.title}</h3>
 						</a>
 
