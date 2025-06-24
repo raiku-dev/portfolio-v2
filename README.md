@@ -8,7 +8,7 @@
 - [x] Blog Section
 	- [x] Last articles with link to dedicated blog page
 
-- [ ] About
+- [x] About
 
 - [ ] Tech Stack split in categories
 	
