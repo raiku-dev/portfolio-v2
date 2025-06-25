@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 import defaultPostCover from 'src/assets/images/post.webp';
 import defaultAuthorImg from 'src/assets/images/pfp-small.webp';
 
-const blogposts = await getCollection('blogpost');
+const blogposts = await getCollection('blogposts');
 const latestPosts = blogposts
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	.slice(0, 3);

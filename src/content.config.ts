@@ -1,21 +1,39 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-const blogpost = defineCollection({
+const blogposts = defineCollection({
 	loader: glob({ pattern: '**/*.{mdx,md}', base: './src/blogposts/' }),
-	schema: ({ image }) => z.object({
-		title: z.string(),
-		description: z.string(),
-		pubDate: z.coerce.date(),
-		updatedDate: z.coerce.date().optional(),
-		author: z.object({
-			name: z.string(),
-			img: image().optional(),
-		}).default({ name: 'Mikayil Gacek' }),
-		cover: image().optional(),
-		coverAlt: z.string().default('Blog Post Cover Image'),
-		categories: z.array(z.string())
-	})
+	schema: ({ image }) =>
+		z.object({
+			title: z.string(),
+			description: z.string(),
+			pubDate: z.coerce.date(),
+			lastMaintained: z.coerce.date().optional(),
+			author: z
+				.object({
+					name: z.string(),
+					img: image().optional()
+				})
+				.default({ name: 'Mikayil Gacek' }),
+			cover: image().optional(),
+			coverAlt: z.string().default('Blog Post Cover Image'),
+			categories: z.array(z.string())
+		})
 });
 
-export const collections = { blogpost };
+const projects = defineCollection({
+	loader: glob({ pattern: '**/*.{mdx,md}', base: './src/projects/' }),
+	schema: ({ image }) =>
+		z.object({
+			title: z.string(),
+			description: z.string(),
+			pubDate: z.coerce.date(),
+			updatedDate: z.coerce.date().optional(),
+			cover: image().optional(),
+			coverAlt: z.string().default('Preview of the project'),
+			technologies: z.array(z.string()),
+			highlight: z.boolean().default(false)
+		})
+});
+
+export const collections = { blogposts, projects };

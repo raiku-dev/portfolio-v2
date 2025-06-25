@@ -10,7 +10,7 @@
 
 - [x] About
 
-- [ ] Tech Stack split in categories
+- [x] Tech Stack split in categories
 	
 - [ ] Projects
 	- [ ] Featured Projects nice animations and design

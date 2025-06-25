@@ -94,6 +94,10 @@ const textId = 'accText' + Math.floor(Math.random() * 999999);
 
 				.text-inner {
 					padding: 0 16px 16px calc(32px + 12px);
+
+					@include view-mobile {
+						padding: 0 16px 16px;
+					}
 				}
 			}
 
@@ -101,6 +105,10 @@ const textId = 'accText' + Math.floor(Math.random() * 999999);
 				padding: 0 calc(32px + 12px);
 				overflow: hidden;
 				transition: 0.2s;
+
+				@include view-mobile {
+					padding: 0 16px;
+				}
 
 				:global(a) {
 					color: var(--primary);
