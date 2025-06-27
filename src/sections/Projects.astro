@@ -1,7 +1,27 @@
 ---
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
+import flyparker from '@assets/images/flyparker.webp';
 
 const allProjects = await getCollection('projects');
 const projects = allProjects.filter(project => project.data.highlight);
 ---
+
+<section class="projects">
+	<h2 class="section-heading">Projects</h2>
+
+	<div class="projects-container">
+		{
+			projects.map(project => (
+				<div class="project">
+					<div class="img-container">
+						<Image
+							src={flyparker}
+							alt="FlyParker Airport Parking Comparison"
+						/>
+					</div>
+				</div>
+			))
+		}
+	</div>
+</section>
