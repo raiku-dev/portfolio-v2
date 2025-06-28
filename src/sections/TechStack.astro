@@ -184,14 +184,13 @@ import Vscode from '~icons/devicon/vscode';
 		.tech-container {
 			display: grid;
 			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 8px;
+			margin-bottom: 40px;
 
 			@include view-mobile-m {
 				display: flex;
 				flex-wrap: wrap;
 			}
-
-			gap: 8px;
-			margin-bottom: 40px;
 
 			&:last-child {
 				margin-bottom: 0;
