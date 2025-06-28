@@ -103,10 +103,6 @@ const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 
 	a {
 		text-decoration: none;
-
-		&:visited {
-			color: var(--text);
-		}
 	}
 
 	button {
@@ -115,6 +111,23 @@ const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 		border-radius: 0;
 		appearance: none;
 		background-color: transparent;
+	}
+
+	.main-button {
+		@include font-heading;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		padding: 8px 16px;
+		border-radius: 8px;
+		border: 1px solid var(--primary);
+		color: var(--primary);
+		transition: 0.2s;
+
+		@include hover {
+			color: var(--white);
+			border-color: var(--white);
+		}
 	}
 
 	h1 {

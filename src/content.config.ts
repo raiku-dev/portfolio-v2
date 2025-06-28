@@ -32,6 +32,7 @@ const projects = defineCollection({
 			cover: image().optional(),
 			coverAlt: z.string().default('Preview of the project'),
 			technologies: z.array(z.string()),
+			externalLink: z.string().optional(),
 			highlight: z.boolean().default(false)
 		})
 });

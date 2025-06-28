@@ -13,8 +13,7 @@ const latestPosts = blogposts
 <section class="last-blog-posts">
 	<h2 class="section-heading">
 		Latest Posts
-		<a href="/blog" class="blog-link"><span>//</span><span>see all</span></a
-		>
+		<a href="/blog" class="main-button">// see all</a>
 	</h2>
 
 	<div class="post-container">
@@ -80,27 +79,6 @@ const latestPosts = blogposts
 			justify-content: space-between;
 		}
 
-		.blog-link {
-			display: flex;
-			gap: 8px;
-			padding: 8px 16px;
-			border-radius: 8px;
-			width: fit-content;
-			@include font-heading;
-			transition: 0.2s;
-			border: 1px solid var(--primary);
-			color: var(--primary);
-
-			@include hover {
-				border-color: var(--white);
-				color: var(--white);
-
-				&::after {
-					width: 100%;
-				}
-			}
-		}
-
 		.post-container {
 			display: flex;
 			justify-content: center;
@@ -116,6 +94,7 @@ const latestPosts = blogposts
 				border-radius: 8px;
 				overflow: hidden;
 				transition: border-color 0.2s;
+				box-shadow: 0 4px 10px #00000055;
 
 				&:has(.heading:hover, .img-container:hover) {
 					@include hover {
