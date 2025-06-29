@@ -155,7 +155,7 @@
 							<div class="categories">
 								<xsl:for-each select="category">
 									<a target="_blank" class="category-pill">
-										<xsl:attribute name="href">/tags/<xsl:value-of
+										<xsl:attribute name="href">/blog/tags/<xsl:value-of
 												select="." />
 										</xsl:attribute>
 										<span>#</span>

@@ -14,8 +14,6 @@ export const getStaticPaths = (async () => {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-
-// TODO: Display categories
 ---
 
 <BaseLayout
@@ -26,6 +24,24 @@ const { Content } = await render(post);
 >
 	<article>
 		<h1>{post.data.title}</h1>
+		<div class="categories">
+			{
+				post.data.categories.map(c => (
+					<a href={`/blog/tags/${c.toLowerCase()}`} class="category">
+						{c}
+					</a>
+				))
+			}
+		</div>
+		<p class="date">
+			{
+				post.data.pubDate.toLocaleString('en-GB', {
+					day: '2-digit',
+					month: 'long',
+					year: 'numeric'
+				})
+			}
+		</p>
 		{
 			post.data.cover && (
 				<div class="cover-container">

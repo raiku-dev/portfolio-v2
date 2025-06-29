@@ -106,6 +106,7 @@ const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
+		scroll-margin-top: 80px;
 	}
 
 	html {
@@ -254,6 +255,31 @@ const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 
 			&:first-child {
 				margin-top: 0;
+				margin-bottom: 0;
+			}
+		}
+
+		.categories {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 12px;
+
+			.category {
+				line-height: 1;
+				display: flex;
+				@include font-heading;
+				color: var(--primary);
+				text-decoration: underline;
+				transition: 0.2s;
+
+				&::before {
+					content: '#';
+				}
+
+				@include hover {
+					color: var(--white);
+					text-decoration-color: var(--white);
+				}
 			}
 		}
 
