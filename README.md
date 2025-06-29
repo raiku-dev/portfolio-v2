@@ -13,19 +13,20 @@
 - [x] Tech Stack split in categories
 	
 - [ ] Projects
-	- [ ] Featured Projects nice animations and design
-	- [ ] Other projects in cards with animation (see details)
-	- [ ] Template needed for detail description (not excerpt)
-	- [ ] Videos (?)
+	- [x] Highlight Projects section for landingpage
+	- [ ] Template for project detail page
+	- [ ] Other projects in cards with animation (Project index page)
 
 - [ ] (Reviews ?)
 
 - [ ] Now page
 
-- [ ] Footer
-	- [ ] Social links (GitHub, X, LinkedIn)
-	- [ ] Footer cursor animation behind name (blinking cursor)
-	- [ ] Back to top btn
+- [x] Footer
+	- [x] Social links (GitHub, X, LinkedIn)
+	- [x] Footer cursor animation behind name (blinking cursor)
+	- [x] Back to top btn
+
+- [ ] Nice animations
 
 
 ## Blog

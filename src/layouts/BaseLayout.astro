@@ -1,6 +1,7 @@
 ---
 import Head from '@sections/Head.astro';
 import Header from '@sections/Header.astro';
+import Footer from '@sections/Footer.astro';
 
 const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 ---
@@ -14,6 +15,8 @@ const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 		<main>
 			<slot />
 		</main>
+
+		<Footer />
 	</body>
 </html>
 
@@ -44,6 +47,32 @@ const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 		src: url('/fonts/jb-i.woff2') format('woff2');
 	}
 
+	// Animation
+	@keyframes blink-animation {
+		0% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 1;
+		}
+		51% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+
+	.cursor {
+		display: inline-block;
+		width: 20px;
+		height: 0.9em;
+		background-color: var(--white);
+		transform: translateY(0.1em);
+		animation: blink-animation 1s infinite;
+	}
+
+	// Styles
 	:root {
 		// Paddings and sizes
 		--section-padding: 80px;
@@ -118,11 +147,12 @@ const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 		display: flex;
 		align-items: center;
 		gap: 8px;
-		padding: 8px 16px;
+		padding: 10px 16px 9px;
 		border-radius: 8px;
 		border: 1px solid var(--primary);
 		color: var(--primary);
 		transition: 0.2s;
+		line-height: 1;
 
 		@include hover {
 			color: var(--white);
