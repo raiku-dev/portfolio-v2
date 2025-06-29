@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
 
 export const getStaticPaths = (async () => {
 	const blogposts = await getCollection('blogposts');
@@ -13,6 +14,8 @@ export const getStaticPaths = (async () => {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+// TODO: Display categories
 ---
 
 <BaseLayout
@@ -21,13 +24,20 @@ const { Content } = await render(post);
 	ogImgSrc={post.data.cover}
 	ogImgAlt={post.data.coverAlt}
 >
-	<section>
+	<article>
+		<h1>{post.data.title}</h1>
+		{
+			post.data.cover && (
+				<div class="cover-container">
+					<Image src={post.data.cover} alt={post.data.coverAlt} />
+				</div>
+			)
+		}
+		<blockquote>{post.data.description}</blockquote>
 		<Content />
-	</section>
+	</article>
 </BaseLayout>
 
 <style lang="scss">
-	section {
-		max-width: 1000px;
-	}
+	// Styles are in BaseLayout
 </style>

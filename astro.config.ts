@@ -5,7 +5,6 @@ import node from '@astrojs/node';
 import { remarkReadingTime } from './src/plugins/readingTime';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import svelte from '@astrojs/svelte';
 import devtoolsJson from 'vite-plugin-devtools-json';
 import Icons from 'unplugin-icons/vite';
 
@@ -18,7 +17,7 @@ export default defineConfig({
 		defaultStrategy: 'viewport',
 		prefetchAll: true
 	},
-	integrations: [mdx(), svelte()],
+	integrations: [mdx()],
 	markdown: {
 		remarkPlugins: [remarkReadingTime]
 	},

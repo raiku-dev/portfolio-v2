@@ -13,7 +13,6 @@
 		"@astrojs/mdx": "^4.3.0",
 		"@astrojs/node": "^9.2.2",
 		"@astrojs/rss": "^4.0.12",
-		"@astrojs/svelte": "^7.1.0",
 		"astro": "^5.9.0",
 		"mdast-util-to-string": "^4.0.0",
 		"modern-normalize": "^3.0.1",

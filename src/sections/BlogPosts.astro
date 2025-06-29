@@ -185,7 +185,7 @@ const latestPosts = blogposts
 							margin-bottom: 12px;
 							display: -webkit-box;
 							-webkit-box-orient: vertical;
-							-webkit-line-clamp: 3;
+							-webkit-line-clamp: 2;
 							overflow: hidden;
 							text-overflow: ellipsis;
 							width: fit-content;
@@ -193,16 +193,17 @@ const latestPosts = blogposts
 							text-decoration: underline;
 							text-decoration-color: transparent;
 							text-underline-offset: 4px;
+							min-height: calc(2 * 1em * 1.4);
 						}
 					}
 
 					.description {
-						margin-top: auto;
 						color: var(--lightgray);
 						margin-bottom: 20px;
 					}
 
 					.categories {
+						margin-top: auto;
 						display: flex;
 						flex-wrap: wrap;
 						gap: 8px;
