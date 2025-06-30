@@ -2,12 +2,15 @@
 import { ClientRouter } from 'astro:transitions';
 
 const {
-	title = 'Mikayil - Full-Stack Developer | Portfolio and Blog',
-	description = 'Personal Portfolio / Blog of Mikayil. Find out more about my personal projects and learnings through my blog.',
-	// TODO: Add OG img
-	ogImgSrc = '',
-	ogImgAlt = 'Screenshot of the portfolio page'
+	title,
+	description = 'Personal Portfolio / Developer Blog of Mikayil. Find out more about my personal projects and learnings through my blog.',
+	ogImgSrc,
+	ogImgAlt
 } = Astro.props;
+
+const finalTitle = title
+	? title + ' | Mikayil Dev'
+	: 'Mikayil - Full-Stack Developer | Portfolio and Blog';
 ---
 
 <head>
@@ -22,21 +25,58 @@ const {
 		title="Mikayil's Dev Blog"
 		href={new URL('rss.xml', Astro.site)}
 	/>
-	<title>{title}</title>
+
+	<title>{finalTitle}</title>
 	<meta name="description" content={description} />
 
 	<!-- Open Graph tags -->
-	<meta property="og:title" content={title} />
+	<meta property="og:title" content={finalTitle} />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content={import.meta.env.SITE} />
 	<meta property="og:description" content={description} />
-	<meta property="og:image" content={ogImgSrc} />
-	<meta property="og:image:alt" content={ogImgAlt} />
+	<meta property="og:image" content={ogImgSrc ?? '/images/ogImg.webp'} />
+	<meta
+		property="og:image:alt"
+		content={ogImgAlt ?? 'Screenshot of the portfolio blog page'}
+	/>
 
-	<!-- TODO: Favicons -->
+	<link
+		rel="icon"
+		type="image/png"
+		href="/favicons/favicon-96x96.png"
+		sizes="96x96"
+	/>
 	<link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg" />
+	<link rel="shortcut icon" href="/favicons/favicon.ico" />
+	<link
+		rel="apple-touch-icon"
+		sizes="180x180"
+		href="/favicons/apple-touch-icon.png"
+	/>
+	<meta name="apple-mobile-web-app-title" content="Raiku's Blog" />
+	<link rel="manifest" href="/favicons/site.webmanifest" />
 
-	<!-- TODO: Analytics -->
+	<link
+		rel="preload"
+		href="/fonts/vm.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin="anonymous"
+	/>
+	<link
+		rel="preload"
+		href="/fonts/jb.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin="anonymous"
+	/>
+	<link
+		rel="preload"
+		href="/fonts/jb-i.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin="anonymous"
+	/>
 
 	<!-- View Transitions-->
 	<ClientRouter />

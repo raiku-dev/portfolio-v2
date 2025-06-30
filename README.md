@@ -17,8 +17,6 @@
 	- [ ] Template for project detail page
 	- [ ] Other projects in cards with animation (Project index page)
 
-- [ ] (Reviews ?)
-
 - [ ] Now page
 
 - [x] Footer
@@ -31,9 +29,9 @@
 
 ## Blog
 - [ ] Style all default elements
-	- [ ] Headings h1-h6
-	- [ ] Paragraphs, links and lists (p, a, ul, ol, li)
-		- [ ] List Item Marker
+	- [x] Headings h1-h6
+	- [x] Paragraphs, links and lists (p, a, ul, ol, li)
+		- [x] List Item Marker
 	- [ ] Code blocks, pre blocks
 	- [ ] Images
 
@@ -47,16 +45,16 @@
 
 
 ## Details and QA/Fixes
-- [ ] Link fonts and preload
+- [x] Link fonts and preload
 - [ ] Sitemap
-- [ ] Favicon
-- [ ] SEO optimization
-- [ ] Project Card floating effect
+- [x] Favicon
+- [x] SEO optimization
+- [x] Project Card floating effect
 - [ ] Check mobile (especially old) for overflowing / horizontal scroll issues
 
 
 ## Misc. (optimizations, nice to have, etc.)
 - [ ] ViewTransitions while navigating
 - [ ] Custom Cursor
-- [ ] a11y to some extent
+- [x] a11y to some extent
 - [ ] Analytics
