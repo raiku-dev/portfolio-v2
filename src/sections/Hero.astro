@@ -4,36 +4,38 @@ import bg from '@assets/images/circuit.png';
 ---
 
 <script>
-	const words = ['the web.', 'mobile.', 'people.', 'businesses.'];
-	const wordElement = document.querySelector('.hero .dynamic');
+	document.addEventListener('astro:page-load', async () => {
+		const words = ['the web.', 'mobile.', 'people.', 'businesses.'];
+		const wordElement = document.querySelector('.hero .dynamic');
 
-	while (wordElement) {
-		for (const word of words) {
-			if (word === wordElement.textContent) continue;
+		while (wordElement) {
+			for (const word of words) {
+				if (word === wordElement.textContent) continue;
 
-			const currentWord = wordElement.textContent || '';
-			for (let j = 0; j < currentWord.length; j++) {
-				wordElement.textContent = currentWord.slice(
-					0,
-					currentWord.length - 1 - j
-				);
-				await wait(100);
+				const currentWord = wordElement.textContent || '';
+				for (let j = 0; j < currentWord.length; j++) {
+					wordElement.textContent = currentWord.slice(
+						0,
+						currentWord.length - 1 - j
+					);
+					await wait(100);
+				}
+
+				for (let k = 0; k < word.length; k++) {
+					wordElement.textContent = word.slice(0, k + 1);
+					await wait(100);
+				}
+				await wait(2000);
 			}
-
-			for (let k = 0; k < word.length; k++) {
-				wordElement.textContent = word.slice(0, k + 1);
-				await wait(100);
-			}
-			await wait(2000);
 		}
-	}
+	});
 
 	async function wait(ms: number) {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
 </script>
 
-<section class="hero">
+<section class="hero" id="home">
 	<div class="bg-container">
 		<Image class="bg" src={bg} alt="" />
 		<div class="shine"></div>

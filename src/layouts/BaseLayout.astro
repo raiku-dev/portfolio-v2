@@ -2,11 +2,16 @@
 import Head from '@sections/Head.astro';
 import Header from '@sections/Header.astro';
 import Footer from '@sections/Footer.astro';
+import { slide } from 'astro:transitions';
 
 const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 ---
 
-<html lang="en">
+<html
+	lang="en"
+	transition:name="root"
+	transition:animate={slide({ duration: 400 })}
+>
 	<Head {title} {description} {ogImgSrc} {ogImgAlt} />
 
 	<body>
@@ -250,6 +255,10 @@ const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 			&:first-child {
 				margin-top: 0;
 				margin-bottom: 0;
+			}
+
+			p {
+				all: inherit;
 			}
 		}
 

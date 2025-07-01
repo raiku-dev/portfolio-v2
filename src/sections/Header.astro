@@ -3,43 +3,51 @@ import logo from '@assets/images/pfp-small.webp';
 ---
 
 <script>
-	let lastWidth = 0;
-	const breakpoint = 840;
+	document.addEventListener('astro:page-load', () => {
+		let lastWidth = 0;
+		const breakpoint = 840;
 
-	const navToggle = document.querySelector('header .mbt');
-	const nav = document.querySelector('header nav');
+		const navToggle = document.querySelector('header .mbt');
+		const nav = document.querySelector('header nav');
 
-	function toggleMenu() {
-		if (nav?.hasAttribute('hidden') && window.innerWidth <= breakpoint) {
-			document.body.style.overflow = 'hidden';
+		function toggleMenu() {
+			if (
+				nav?.hasAttribute('hidden') &&
+				window.innerWidth <= breakpoint
+			) {
+				document.body.style.overflow = 'hidden';
+				nav?.removeAttribute('hidden');
+				navToggle?.setAttribute('aria-expanded', 'true');
+			} else {
+				document.body.style.overflow = 'auto';
+				nav?.setAttribute('hidden', 'true');
+				navToggle?.setAttribute('aria-expanded', 'false');
+			}
+		}
+
+		function onResize() {
+			if (nav?.hasAttribute('hidden') || window.innerWidth > breakpoint) {
+				return;
+			}
+
+			if (
+				lastWidth !== window.innerWidth &&
+				!nav?.hasAttribute('hidden')
+			) {
+				lastWidth = window.innerWidth;
+				toggleMenu();
+			}
+		}
+
+		window.addEventListener('resize', onResize);
+		document.addEventListener('DOMContentLoaded', () => {
+			if (window.innerWidth <= breakpoint) return;
 			nav?.removeAttribute('hidden');
-			navToggle?.setAttribute('aria-expanded', 'true');
-		} else {
-			document.body.style.overflow = 'auto';
-			nav?.setAttribute('hidden', 'true');
 			navToggle?.setAttribute('aria-expanded', 'false');
-		}
-	}
+		});
 
-	function onResize() {
-		if (nav?.hasAttribute('hidden') || window.innerWidth > breakpoint) {
-			return;
-		}
-
-		if (lastWidth !== window.innerWidth && !nav?.hasAttribute('hidden')) {
-			lastWidth = window.innerWidth;
-			toggleMenu();
-		}
-	}
-
-	window.addEventListener('resize', onResize);
-	document.addEventListener('DOMContentLoaded', () => {
-		if (window.innerWidth <= breakpoint) return;
-		nav?.removeAttribute('hidden');
-		navToggle?.setAttribute('aria-expanded', 'false');
+		navToggle?.addEventListener('click', toggleMenu);
 	});
-
-	navToggle?.addEventListener('click', toggleMenu);
 </script>
 
 <header id="header">
@@ -48,7 +56,7 @@ import logo from '@assets/images/pfp-small.webp';
 	</a>
 
 	<nav id="main-nav" aria-label="Main" hidden>
-		<a href="/" title="To homepage">Home</a>
+		<a href="/#home" title="To homepage">Home</a>
 		<a href="/blog" title="To my developer blog">Blog</a>
 		<a href="/#about" title="To the about section">About</a>
 		<a href="/#projects" title="To the projects section">Projects</a>
@@ -190,6 +198,10 @@ import logo from '@assets/images/pfp-small.webp';
 					&::after {
 						width: 100%;
 					}
+				}
+
+				&.active {
+					text-decoration: underline;
 				}
 
 				&::before {

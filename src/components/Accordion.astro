@@ -6,21 +6,27 @@ const textId = 'accText' + Math.floor(Math.random() * 999999);
 ---
 
 <script>
-	const accordions = document.querySelectorAll('.accordion');
+	document.addEventListener('astro:page-load', async () => {
+		const accordions = document.querySelectorAll('.accordion');
 
-	accordions.forEach(accordion => {
-		const toggleBtn = accordion.querySelector('.toggle-btn');
-		const textContainer = accordion.querySelector('.text-wrapper');
+		accordions.forEach(accordion => {
+			const toggleBtn = accordion.querySelector('.toggle-btn');
+			const textContainer = accordion.querySelector('.text-wrapper');
 
-		toggleBtn?.addEventListener('click', () => {
-			toggleBtn.setAttribute(
-				'aria-expanded',
-				(toggleBtn.getAttribute('aria-expanded') !== 'true').toString()
-			);
-			textContainer?.setAttribute(
-				'aria-hidden',
-				(toggleBtn.getAttribute('aria-expanded') !== 'true').toString()
-			);
+			toggleBtn?.addEventListener('click', () => {
+				toggleBtn.setAttribute(
+					'aria-expanded',
+					(
+						toggleBtn.getAttribute('aria-expanded') !== 'true'
+					).toString()
+				);
+				textContainer?.setAttribute(
+					'aria-hidden',
+					(
+						toggleBtn.getAttribute('aria-expanded') !== 'true'
+					).toString()
+				);
+			});
 		});
 	});
 </script>

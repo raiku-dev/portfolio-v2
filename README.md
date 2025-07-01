@@ -18,6 +18,8 @@
 	- [ ] Other projects in cards with animation (Project index page)
 
 - [ ] Now page
+	- [x] Create
+	- [ ] Content
 
 - [x] Footer
 	- [x] Social links (GitHub, X, LinkedIn)
@@ -28,6 +30,8 @@
 
 
 ## Blog
+- [x] Check if custom components like accordion work
+
 - [ ] Style all default elements
 	- [x] Headings h1-h6
 	- [x] Paragraphs, links and lists (p, a, ul, ol, li)
@@ -35,26 +39,27 @@
 	- [ ] Code blocks, pre blocks
 	- [ ] Images
 
-- [ ] Check if custom components like accordion work
 
 - [ ] Add cover images for existing posts
 
 
 ## 404 Page
-- [ ] Terminal on 404 page or as seperate section (?)
+- [ ] 404 Page
+	- [ ] Basic style and content
+	- [ ] Terminal on 404 page or as seperate section (?)
 
 
 ## Details and QA/Fixes
 - [x] Link fonts and preload
-- [ ] Sitemap
 - [x] Favicon
 - [x] SEO optimization
 - [x] Project Card floating effect
+- [ ] Sitemap
 - [ ] Check mobile (especially old) for overflowing / horizontal scroll issues
 
 
 ## Misc. (optimizations, nice to have, etc.)
-- [ ] ViewTransitions while navigating
-- [ ] Custom Cursor
+- [x] ViewTransitions while navigating
 - [x] a11y to some extent
+- [ ] Custom Cursor
 - [ ] Analytics
