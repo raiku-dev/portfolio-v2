@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
-import node from '@astrojs/node';
 import { remarkReadingTime } from './src/plugins/readingTime';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -21,9 +20,6 @@ export default defineConfig({
 	markdown: {
 		remarkPlugins: [remarkReadingTime]
 	},
-	adapter: node({
-		mode: 'standalone'
-	}),
 	vite: {
 		plugins: [
 			Icons({
