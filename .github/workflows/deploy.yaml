@@ -31,7 +31,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "dist/*"
-          target: "/var/www/mikayil.dev_new"
+          target: "/srv/mikayil.dev_new"
 
       - name: Atomic deploy - swap directories
         uses: appleboy/ssh-action@v1.0.0
