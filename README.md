@@ -39,8 +39,9 @@
 	- [ ] Code blocks, pre blocks
 	- [ ] Images
 
-
 - [ ] Add cover images for existing posts
+
+- [ ] Reading time
 
 
 ## 404 Page
