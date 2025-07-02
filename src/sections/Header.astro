@@ -9,6 +9,7 @@ import logo from '@assets/images/pfp-small.webp';
 
 		const navToggle = document.querySelector('header .mbt');
 		const nav = document.querySelector('header nav');
+		const navLinks = document.querySelectorAll('header nav a');
 
 		function toggleMenu() {
 			if (
@@ -47,6 +48,13 @@ import logo from '@assets/images/pfp-small.webp';
 		});
 
 		navToggle?.addEventListener('click', toggleMenu);
+		navLinks.forEach(link => {
+			link.addEventListener('click', () => {
+				document.body.style.overflow = 'auto';
+				nav?.setAttribute('hidden', 'true');
+				navToggle?.setAttribute('aria-expanded', 'false');
+			});
+		});
 	});
 </script>
 
