@@ -59,11 +59,11 @@ import logo from '@assets/images/pfp-small.webp';
 </script>
 
 <header id="header">
-	<a href="/" class="logo-container">
+	<a href="/#home" class="logo-container animate left">
 		<img src={logo.src} alt="Mikayil's alias raiku" />
 	</a>
 
-	<nav id="main-nav" aria-label="Main" hidden>
+	<nav id="main-nav" aria-label="Main" hidden class="animate right">
 		<a href="/#home" title="To homepage">Home</a>
 		<a href="/blog" title="To my developer blog">Blog</a>
 		<a href="/#about" title="To the about section">About</a>
@@ -87,7 +87,7 @@ import logo from '@assets/images/pfp-small.webp';
 <style lang="scss">
 	header {
 		display: flex;
-		position: sticky;
+		position: fixed;
 		width: 100%;
 		top: 0;
 		left: 0;

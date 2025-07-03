@@ -26,7 +26,7 @@
 	- [x] Footer cursor animation behind name (blinking cursor)
 	- [x] Back to top btn
 
-- [ ] Nice animations
+- [x] Nice animations
 
 
 ## Blog
@@ -41,7 +41,7 @@
 
 - [ ] Add cover images for existing posts
 
-- [ ] Reading time
+- [x] Reading time
 
 
 ## 404 Page

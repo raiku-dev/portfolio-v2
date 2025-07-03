@@ -10,13 +10,15 @@ const projects = allProjects.filter(project => project.data.highlight);
 ---
 
 <section id="projects">
-	<h2 class="section-heading">Projects</h2>
+	<h2 class="section-heading animate bottom">Projects</h2>
 
 	<div class="projects">
 		{
-			projects.map(project => (
-				<div class="project">
-					<div class="img-container">
+			projects.map((project, i) => (
+				<div class="project animate bottom">
+					<div
+						class={`img-container animate ${i % 2 ? 'right' : 'left'}`}
+					>
 						{project.data.cover && (
 							<Image
 								src={project.data.cover}
@@ -25,7 +27,9 @@ const projects = allProjects.filter(project => project.data.highlight);
 						)}
 					</div>
 
-					<div class="text-container">
+					<div
+						class={`text-container animate ${i % 2 ? 'left' : 'right'}`}
+					>
 						<p class="eyebrow">Featured Project</p>
 
 						<h3>{project.data.title}</h3>

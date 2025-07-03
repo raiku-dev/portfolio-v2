@@ -9,13 +9,19 @@ const latestPosts = blogposts
 ---
 
 <section class="last-blog-posts">
-	<h2 class="section-heading">
+	<h2 class="section-heading animate bottom">
 		Latest Posts
 		<a href="/blog" class="main-button">// see all</a>
 	</h2>
 
-	<div class="post-container">
-		{latestPosts.map(post => <Post {post} />)}
+	<div class="post-container animate bottom">
+		{
+			latestPosts.map((post, i) => (
+				<div class={`animate ${i ? (i === 1 ? '' : 'right') : 'left'}`}>
+					<Post {post} />
+				</div>
+			))
+		}
 	</div>
 </section>
 
@@ -34,6 +40,10 @@ const latestPosts = blogposts
 			justify-content: center;
 			gap: 28px;
 			flex-wrap: wrap;
+
+			div {
+				display: flex;
+			}
 		}
 	}
 </style>

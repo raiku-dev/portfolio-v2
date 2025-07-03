@@ -6,10 +6,10 @@ import Accordion from '@components/Accordion.astro';
 ---
 
 <section class="about" id="about">
-	<h2 class="section-heading">About me</h2>
+	<h2 class="section-heading animate bottom">About me</h2>
 
 	<div class="content">
-		<div class="accordion-container">
+		<div class="accordion-container animate left">
 			<Accordion>
 				<p slot="title">
 					<span class="accent">1.</span>
@@ -171,7 +171,7 @@ import Accordion from '@components/Accordion.astro';
 			</Accordion>
 		</div>
 
-		<div class="img-container">
+		<div class="img-container animate right">
 			<Image src={portrait} alt="Mikayil Gacek" />
 			<Image src={pfp} alt="Mikayil Gacek's alias raiku" class="pfp" />
 		</div>
