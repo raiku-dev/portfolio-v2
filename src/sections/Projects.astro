@@ -82,8 +82,23 @@ const projects = allProjects.filter(project => project.data.highlight);
 				align-items: center;
 				position: relative;
 
+				&:nth-child(2n) {
+					flex-direction: row-reverse;
+
+					.text-container {
+						margin-left: 0;
+						margin-right: auto;
+						text-align: start;
+						align-items: flex-start;
+
+						.technologies {
+							justify-content: flex-start;
+						}
+					}
+				}
+
 				@include view-tablet-s {
-					flex-direction: column;
+					flex-direction: column !important;
 					gap: 40px;
 				}
 
