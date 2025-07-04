@@ -16,6 +16,7 @@
 	- [x] Highlight Projects section for landingpage
 	- [ ] Template for project detail page
 	- [ ] Other projects in cards with animation (Project index page)
+	- [ ] Project detail pages content
 
 - [x] Now page
 	- [x] Create
