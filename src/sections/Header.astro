@@ -58,6 +58,8 @@ import logo from '@assets/images/pfp-small.webp';
 	});
 </script>
 
+<div class="header-placeholder"></div>
+
 <header id="header">
 	<a href="/#home" class="logo-container animate left">
 		<img src={logo.src} alt="Mikayil's alias raiku" />
@@ -85,6 +87,10 @@ import logo from '@assets/images/pfp-small.webp';
 </header>
 
 <style lang="scss">
+	.header-placeholder {
+		height: 80px;
+	}
+
 	header {
 		display: flex;
 		position: fixed;

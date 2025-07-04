@@ -2,7 +2,7 @@
 import Head from '@sections/Head.astro';
 import Header from '@sections/Header.astro';
 import Footer from '@sections/Footer.astro';
-import { slide } from 'astro:transitions';
+import { fade } from 'astro:transitions';
 
 const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 ---
@@ -10,7 +10,7 @@ const { title, description, ogImgSrc, ogImgAlt } = Astro.props;
 <html
 	lang="en"
 	transition:name="root"
-	transition:animate={slide({ duration: 400 })}
+	transition:animate={fade({ duration: 400 })}
 >
 	<Head {title} {description} {ogImgSrc} {ogImgAlt} />
 
