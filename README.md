@@ -32,12 +32,12 @@
 ## Blog
 - [x] Check if custom components like accordion work
 
-- [ ] Style all default elements
+- [x] Style all default elements
 	- [x] Headings h1-h6
 	- [x] Paragraphs, links and lists (p, a, ul, ol, li)
 		- [x] List Item Marker
-	- [ ] Code blocks, pre blocks
-	- [ ] Images
+	- [x] Code blocks, pre blocks
+	- [x] Images
 
 - [ ] Add cover images for existing posts
 
@@ -45,9 +45,7 @@
 
 
 ## 404 Page
-- [ ] 404 Page
-	- [ ] Basic style and content
-	- [ ] Terminal on 404 page or as seperate section (?)
+- [x] 404 Page
 
 
 ## Details and QA/Fixes
@@ -56,11 +54,12 @@
 - [x] SEO optimization
 - [x] Project Card floating effect
 - [ ] Sitemap
-- [ ] Check mobile (especially old) for overflowing / horizontal scroll issues
+- [x] Check mobile (especially old) for overflowing / horizontal scroll issues
 
 
 ## Misc. (optimizations, nice to have, etc.)
 - [x] ViewTransitions while navigating
 - [x] a11y to some extent
-- [ ] Custom Cursor
+- [ ] Custom Cursor ?
 - [ ] Analytics
+- [ ] Terminal on 404 page or as seperate section (?)
