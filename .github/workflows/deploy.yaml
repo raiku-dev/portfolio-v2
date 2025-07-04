@@ -26,6 +26,15 @@ jobs:
       - name: Build site
         run: npm run build
 
+      - name: Clean target directory
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            rm -rf /srv/mikayil.dev/*
+
       - name: Copy files to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -33,15 +42,4 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "dist/"
-          target: "/srv/mikayil.dev_new"
-
-      - name: Atomic deploy - swap directories
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            rm -rf /srv/mikayil_dev_old
-            mv /srv/mikayil.dev /srv/mikayil.dev_old
-            mv /srv/mikayil.dev_new /srv/mikayil.dev
+          target: "/srv/mikayil.dev"

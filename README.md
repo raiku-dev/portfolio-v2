@@ -53,7 +53,7 @@
 - [x] Favicon
 - [x] SEO optimization
 - [x] Project Card floating effect
-- [ ] Sitemap
+- [x] Sitemap
 - [x] Check mobile (especially old) for overflowing / horizontal scroll issues
 
 
