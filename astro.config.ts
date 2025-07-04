@@ -6,6 +6,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import devtoolsJson from 'vite-plugin-devtools-json';
 import Icons from 'unplugin-icons/vite';
+import sitemap from '@astrojs/sitemap';
 
 const currentDir = dirname(fileURLToPath(import.meta.url));
 
@@ -16,9 +17,12 @@ export default defineConfig({
 		defaultStrategy: 'viewport',
 		prefetchAll: true
 	},
-	integrations: [mdx()],
+	integrations: [mdx(), sitemap()],
 	markdown: {
-		remarkPlugins: [remarkReadingTime]
+		remarkPlugins: [remarkReadingTime],
+		shikiConfig: {
+			theme: 'gruvbox-dark-hard'
+		}
 	},
 	vite: {
 		plugins: [
@@ -37,3 +41,4 @@ export default defineConfig({
 		}
 	}
 });
+
