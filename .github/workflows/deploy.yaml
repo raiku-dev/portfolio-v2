@@ -32,7 +32,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "dist/*"
+          source: "dist/"
           target: "/srv/mikayil.dev_new"
 
       - name: Atomic deploy - swap directories
@@ -45,4 +45,3 @@ jobs:
             rm -rf /srv/mikayil_dev_old
             mv /srv/mikayil.dev /srv/mikayil.dev_old
             mv /srv/mikayil.dev_new /srv/mikayil.dev
-
