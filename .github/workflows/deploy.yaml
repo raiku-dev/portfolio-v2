@@ -42,7 +42,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            rm -rf /var/www/mikayil_dev_old
+            rm -rf /srv/mikayil_dev_old
             mv /srv/mikayil.dev /srv/mikayil.dev_old
             mv /srv/mikayil.dev_new /srv/mikayil.dev
 
