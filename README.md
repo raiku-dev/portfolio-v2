@@ -17,9 +17,9 @@
 	- [ ] Template for project detail page
 	- [ ] Other projects in cards with animation (Project index page)
 
-- [ ] Now page
+- [x] Now page
 	- [x] Create
-	- [ ] Content
+	- [x] Content
 
 - [x] Footer
 	- [x] Social links (GitHub, X, LinkedIn)
