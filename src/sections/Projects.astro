@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 
 import External from '~icons/lucide/external-link';
 import Book from '~icons/lucide/book-text';
+import GitHub from '~icons/bytesize/github';
 
 const allProjects = await getCollection('projects');
 const projects = allProjects.filter(project => project.data.highlight);
@@ -62,6 +63,17 @@ const projects = allProjects.filter(project => project.data.highlight);
 								<Book />
 								Read
 							</a>
+
+							{project.data.githubLink && (
+								<a
+									href={project.data.githubLink}
+									class="main-button"
+									title="Visit Github Repo"
+								>
+									<GitHub />
+									Code
+								</a>
+							)}
 						</div>
 					</div>
 				</div>
