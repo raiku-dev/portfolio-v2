@@ -73,10 +73,13 @@ import Top from '~icons/lucide/arrow-up-from-line';
 		</div>
 	</div>
 
-	<p class="copyright">
-		&copy; {new Date().getFullYear()} Mikayil Gacek<span class="cursor"
-		></span>
-	</p>
+	<div class="end-bar">
+		<p class="copyright">
+			&copy; {new Date().getFullYear()} Mikayil Gacek<span class="cursor"
+			></span>
+		</p>
+		<a href="/notes" title="Take a look at my notes">My Notes</a>
+	</div>
 </footer>
 
 <style lang="scss">
@@ -178,13 +181,25 @@ import Top from '~icons/lucide/arrow-up-from-line';
 				}
 			}
 		}
-	}
 
-	.copyright {
-		.cursor {
-			margin-left: 0.2em;
-			width: 0.5em;
-			height: 1em;
+		.end-bar {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: 20px;
+
+			.copyright {
+				.cursor {
+					margin-left: 0.2em;
+					width: 0.5em;
+					height: 1em;
+				}
+			}
+
+			a {
+				text-decoration: underline;
+				color: var(--primary);
+			}
 		}
 	}
 </style>
