@@ -1,6 +1,4 @@
 ---
-import { ClientRouter } from 'astro:transitions';
-
 const {
 	title,
 	description = 'Personal Portfolio / Developer Blog of Mikayil. Find out more about my personal projects and learnings through my blog.',
@@ -79,10 +77,8 @@ const finalTitle = title
 		crossorigin="anonymous"
 	/>
 
+	<!-- Animations -->
 	<script src="/src/assets/scripts/animation.js"></script>
-
-	<!-- View Transitions / Client Side Router -->
-	<ClientRouter />
 
 	<!-- Slot -->
 	<slot />

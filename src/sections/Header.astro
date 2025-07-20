@@ -3,57 +3,49 @@ import logo from '@assets/images/pfp-small.webp';
 ---
 
 <script>
-	document.addEventListener('astro:page-load', () => {
-		let lastWidth = 0;
-		const breakpoint = 840;
+	let lastWidth = 0;
+	const breakpoint = 840;
 
-		const navToggle = document.querySelector('header .mbt');
-		const nav = document.querySelector('header nav');
-		const navLinks = document.querySelectorAll('header nav a');
+	const navToggle = document.querySelector('header .mbt');
+	const nav = document.querySelector('header nav');
+	const navLinks = document.querySelectorAll('header nav a');
 
-		function toggleMenu() {
-			if (
-				nav?.hasAttribute('hidden') &&
-				window.innerWidth <= breakpoint
-			) {
-				document.body.style.overflow = 'hidden';
-				nav?.removeAttribute('hidden');
-				navToggle?.setAttribute('aria-expanded', 'true');
-			} else {
-				document.body.style.overflow = 'auto';
-				nav?.setAttribute('hidden', 'true');
-				navToggle?.setAttribute('aria-expanded', 'false');
-			}
-		}
-
-		function onResize() {
-			if (nav?.hasAttribute('hidden') || window.innerWidth > breakpoint) {
-				return;
-			}
-
-			if (
-				lastWidth !== window.innerWidth &&
-				!nav?.hasAttribute('hidden')
-			) {
-				lastWidth = window.innerWidth;
-				toggleMenu();
-			}
-		}
-
-		window.addEventListener('resize', onResize);
-		document.addEventListener('DOMContentLoaded', () => {
-			if (window.innerWidth <= breakpoint) return;
+	function toggleMenu() {
+		if (nav?.hasAttribute('hidden') && window.innerWidth <= breakpoint) {
+			document.body.style.overflow = 'hidden';
 			nav?.removeAttribute('hidden');
+			navToggle?.setAttribute('aria-expanded', 'true');
+		} else {
+			document.body.style.overflow = 'auto';
+			nav?.setAttribute('hidden', 'true');
 			navToggle?.setAttribute('aria-expanded', 'false');
-		});
+		}
+	}
 
-		navToggle?.addEventListener('click', toggleMenu);
-		navLinks.forEach(link => {
-			link.addEventListener('click', () => {
-				document.body.style.overflow = 'auto';
-				nav?.setAttribute('hidden', 'true');
-				navToggle?.setAttribute('aria-expanded', 'false');
-			});
+	function onResize() {
+		if (nav?.hasAttribute('hidden') || window.innerWidth > breakpoint) {
+			return;
+		}
+
+		if (lastWidth !== window.innerWidth && !nav?.hasAttribute('hidden')) {
+			lastWidth = window.innerWidth;
+			toggleMenu();
+		}
+	}
+
+	window.addEventListener('resize', onResize);
+	document.addEventListener('DOMContentLoaded', () => {
+		if (window.innerWidth <= breakpoint) return;
+		nav?.removeAttribute('hidden');
+		navToggle?.setAttribute('aria-expanded', 'false');
+	});
+
+	navToggle?.addEventListener('click', toggleMenu);
+	navLinks.forEach(link => {
+		link.addEventListener('click', () => {
+			document.body.style.overflow = 'auto';
+			nav?.setAttribute('hidden', 'true');
+			navToggle?.setAttribute('aria-expanded', 'false');
 		});
 	});
 </script>
@@ -61,11 +53,19 @@ import logo from '@assets/images/pfp-small.webp';
 <div class="header-placeholder"></div>
 
 <header id="header">
-	<a href="/#home" class="logo-container animate left">
+	<a
+		href="/#home"
+		class={`logo-container ${Astro.url.pathname === '/' ? 'animate left' : ''}`}
+	>
 		<img src={logo.src} alt="Mikayil's alias raiku" />
 	</a>
 
-	<nav id="main-nav" aria-label="Main" hidden class="animate right">
+	<nav
+		id="main-nav"
+		aria-label="Main"
+		hidden
+		class={Astro.url.pathname === '/' ? 'animate right' : ''}
+	>
 		<a href="/#home" title="To homepage">Home</a>
 		<a href="/blog" title="To my developer blog">Blog</a>
 		<a href="/#about" title="To the about section">About</a>
