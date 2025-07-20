@@ -5,50 +5,68 @@ import defaultAuthorImg from 'src/assets/images/pfp-small.webp';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-	post: CollectionEntry<'blogposts'>;
+	post: CollectionEntry<'blogposts' | 'notes'>;
 }
 
 const { post } = Astro.props;
-const { data } = post;
+
+let postUrl: string;
+let tagUrl: string;
+if (post.collection === 'blogposts') {
+	postUrl = '/blog/posts';
+	tagUrl = '/blog/tags';
+} else if (post.collection === 'notes') {
+	postUrl = '/notes';
+	tagUrl = '/notes/tags';
+} else {
+	throw new Error('Unknown Content Type');
+}
 ---
 
 <div class="post">
-	<a href={`/blog/posts/${post.id}`} class="img-container" title="read post">
-		<Image src={data.cover ?? defaultPostCover} alt={data.coverAlt ?? ''} />
+	<a href={`${postUrl}/${post.id}`} class="img-container" title="read post">
+		<Image
+			src={post.data.cover ?? defaultPostCover}
+			alt={post.data.coverAlt ?? ''}
+		/>
 	</a>
 
 	<div class="text-container">
 		<p class="pubDate">
 			{
-				data.pubDate.toLocaleString('en-GB', {
+				post.data.pubDate.toLocaleString('en-GB', {
 					dateStyle: 'long'
 				})
 			}
 		</p>
 
-		<a class="heading" href={`/blog/posts/${post.id}`}>
-			<h3 transition:persist={post.data.title}>{data.title}</h3>
+		<a class="heading" href={`${postUrl}/${post.id}`}>
+			<h3 transition:persist={post.data.title}>{post.data.title}</h3>
 		</a>
 
-		<p class="description">{data.description}</p>
+		<p class="description">{post.data.description}</p>
 
 		<div class="categories">
 			{
-				data.categories.map(c => (
-					<a href={`/blog/tags/${c.toLowerCase()}`} class="category">
+				post.data.categories.map(c => (
+					<a href={`${tagUrl}/${c.toLowerCase()}`} class="category">
 						{c}
 					</a>
 				))
 			}
 		</div>
 
-		<p class="author">
-			<Image
-				src={data.author.img ?? defaultAuthorImg}
-				alt={data.author.name}
-			/>
-			{data.author.name}
-		</p>
+		{
+			post.collection === 'blogposts' && (
+				<p class="author">
+					<Image
+						src={post.data.author.img ?? defaultAuthorImg}
+						alt={post.data.author.name}
+					/>
+					{post.data.author.name}
+				</p>
+			)
+		}
 	</div>
 </div>
 
