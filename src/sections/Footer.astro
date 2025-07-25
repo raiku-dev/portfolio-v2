@@ -8,7 +8,12 @@ import Top from '~icons/lucide/arrow-up-from-line';
 ---
 
 <footer>
-	<div class="contact animate bottom">
+	<div
+		class:list={[
+			'contact',
+			{ 'animate bottom': Astro.url.pathname === '/' }
+		]}
+	>
 		<h2>
 			<span> Want to work with me? </span>
 
@@ -23,13 +28,18 @@ import Top from '~icons/lucide/arrow-up-from-line';
 		</h2>
 
 		<div class="bottom">
-			<p class="animate left">
+			<p class={Astro.url.pathname === '/' ? 'animate left' : ''}>
 				Shoot me a message anytime!<br />
 				I'm always open to discuss new opportunities, a full-time position
 				or a potential project.
 			</p>
 
-			<div class="links animate right">
+			<div
+				class:list={[
+					'links',
+					{ 'animate right': Astro.url.pathname === '/' }
+				]}
+			>
 				<h3>Social</h3>
 
 				<div class="links-container">
