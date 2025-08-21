@@ -37,4 +37,34 @@ They are not meant to be a summary but rather a list of personal takeaways from 
 - The Lisp programming language:
 	- has many dialects, in the book "Scheme"
 is used, ANSI standard is Common Lisp
-	- excellent for studying programming constructs , data structures and processes (called procedures in Lisp) which can be represented and manipulated as Lisp data
+	- excellent for studying programming constructs, data structures and processes (called procedures in Lisp) which can be represented and manipulated as Lisp data
+
+### Chapter 1.1: The Elements of Programming
+- Programming languages serve as a framework within we organize our ideas about processes
+- The means provided by programming languages to achieve the above:
+  - Primitive expressions - simplest entities the language is concerned with
+  - Means of combination - by which compound elements are built from simpler ones
+  - Means of abstraction - by which compound elements can be named and manipulated as units
+- Data is "stuff" we want to manipulate
+- Procedures are descriptions of the rules for manipulating the data
+
+#### Chapter 1.1.1: Expresssions
+> "Every Lisp expression (called an s-expression) is written inside parentheses, where the first element is usually a function or operator, and the rest are its arguments." - ChatGPT (lol)
+- "You type an *expression*, and the interpreter responds by displaying the result of its *evaluating* that expression."
+
+
+```lisp 
+; Primitive expression presented
+468
+
+; Interpreter prints
+486
+```
+
+```lisp
+; Expressions represeting numbers combined with expression representing primitive procedure  
+(+ 137 349)
+
+; Result
+486
+```
